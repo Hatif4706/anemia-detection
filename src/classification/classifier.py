@@ -57,6 +57,29 @@ class AnemiaClassifierBenchmark:
             ("classifier", clf)
         ])
 
+    def train_and_evaluate(
+        self,
+        X_train: pd.DataFrame,
+        y_train: np.ndarray,
+        X_test: pd.DataFrame,
+        y_test: np.ndarray
+    ) -> Dict[str, Any]:
+        """
+        Melatih model pada X_train dan mengevaluasi pada independent X_test.
+        """
+        self.feature_names = list(X_train.columns)
+        self.pipeline.fit(X_train, y_train)
+
+        y_proba = self.pipeline.predict_proba(X_test)
+        y_pred = self.pipeline.predict(X_test)
+
+        metrics = EvaluationMetrics.calculate_classification_metrics(y_test, y_pred, y_proba)
+        metrics["model_name"] = self.model_name
+        metrics["n_train"] = len(y_train)
+        metrics["n_test"] = len(y_test)
+        metrics["feature_importance"] = self._get_feature_importances()
+        return metrics
+
     def evaluate_cv(
         self, 
         X: pd.DataFrame, 
@@ -65,17 +88,13 @@ class AnemiaClassifierBenchmark:
     ) -> Dict[str, Any]:
         """
         Melakukan evaluasi Stratified K-Fold Cross Validation bebas data leakage.
-        
-        Args:
-            X: DataFrame berisi fitur numerik (Erythema index, a*, HSV, GLCM, dll)
-            y: Array label biner (1 = Anemia, 0 = Non-Anemia)
-            n_splits: Jumlah fold cross-validation
-            
-        Returns:
-            Dictionary hasil evaluasi metrik diagnostik.
         """
         self.feature_names = list(X.columns)
-        skf = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=self.random_state)
+        # Pastikan n_splits tidak melebihi jumlah sampel per kelas
+        min_class_count = int(np.min(np.bincount(y))) if len(y) > 0 else 2
+        effective_splits = max(2, min(n_splits, min_class_count))
+
+        skf = StratifiedKFold(n_splits=effective_splits, shuffle=True, random_state=self.random_state)
 
         # Prediksi out-of-fold probabilities dan kelas
         y_proba = cross_val_predict(self.pipeline, X, y, cv=skf, method="predict_proba")
@@ -85,6 +104,7 @@ class AnemiaClassifierBenchmark:
         metrics["model_name"] = self.model_name
         metrics["n_samples"] = len(y)
         metrics["n_features"] = X.shape[1]
+        metrics["cv_splits"] = effective_splits
 
         # Latih model final pada seluruh data untuk feature importance
         self.pipeline.fit(X, y)

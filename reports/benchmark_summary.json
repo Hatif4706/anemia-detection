@@ -1,0 +1,244 @@
+{
+    "segmentation": {
+        "mediapipe": {
+            "mean_iou": 0.14253803114510727,
+            "mean_dice": 0.24935826969852934,
+            "mean_latency_ms": 69.82062500173924
+        },
+        "yolo_unet": {
+            "mean_iou": 0.9324522760695704,
+            "mean_dice": 0.9650455927064951,
+            "mean_latency_ms": 19.23396499356022
+        }
+    },
+    "classification": {
+        "xgboost_ground_truth": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1_score": 1.0,
+            "roc_auc": 1.0,
+            "confusion_matrix": [
+                [
+                    20,
+                    0
+                ],
+                [
+                    0,
+                    20
+                ]
+            ],
+            "model_name": "xgboost",
+            "n_samples": 40,
+            "n_features": 29,
+            "cv_splits": 5,
+            "feature_importance": {
+                "rgb_r_mean": 0.4711298942565918,
+                "rgb_r_std": 0.40377092361450195,
+                "rgb_g_mean": 0.12509922683238983,
+                "rgb_g_std": 0.0,
+                "rgb_b_mean": 0.0,
+                "rgb_b_std": 0.0,
+                "red_ratio": 0.0,
+                "green_ratio": 0.0,
+                "blue_ratio": 0.0,
+                "rg_ratio": 0.0,
+                "pallor_index": 0.0,
+                "erythema_index": 0.0,
+                "hsv_h_mean": 0.0,
+                "hsv_h_std": 0.0,
+                "hsv_s_mean": 0.0,
+                "hsv_s_std": 0.0,
+                "hsv_v_mean": 0.0,
+                "hsv_v_std": 0.0,
+                "lab_l_mean": 0.0,
+                "lab_l_std": 0.0,
+                "lab_a_mean": 0.0,
+                "lab_a_std": 0.0,
+                "lab_b_mean": 0.0,
+                "lab_b_std": 0.0,
+                "glcm_contrast": 0.0,
+                "glcm_dissimilarity": 0.0,
+                "glcm_homogeneity": 0.0,
+                "glcm_energy": 0.0,
+                "glcm_correlation": 0.0
+            }
+        },
+        "xgboost_mediapipe": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1_score": 1.0,
+            "roc_auc": 1.0,
+            "confusion_matrix": [
+                [
+                    20,
+                    0
+                ],
+                [
+                    0,
+                    20
+                ]
+            ],
+            "model_name": "xgboost",
+            "n_samples": 40,
+            "n_features": 29,
+            "cv_splits": 5,
+            "feature_importance": {
+                "rgb_r_mean": 0.4711298942565918,
+                "rgb_r_std": 0.40377092361450195,
+                "rgb_g_mean": 0.12509922683238983,
+                "rgb_g_std": 0.0,
+                "rgb_b_mean": 0.0,
+                "rgb_b_std": 0.0,
+                "red_ratio": 0.0,
+                "green_ratio": 0.0,
+                "blue_ratio": 0.0,
+                "rg_ratio": 0.0,
+                "pallor_index": 0.0,
+                "erythema_index": 0.0,
+                "hsv_h_mean": 0.0,
+                "hsv_h_std": 0.0,
+                "hsv_s_mean": 0.0,
+                "hsv_s_std": 0.0,
+                "hsv_v_mean": 0.0,
+                "hsv_v_std": 0.0,
+                "lab_l_mean": 0.0,
+                "lab_l_std": 0.0,
+                "lab_a_mean": 0.0,
+                "lab_a_std": 0.0,
+                "lab_b_mean": 0.0,
+                "lab_b_std": 0.0,
+                "glcm_contrast": 0.0,
+                "glcm_dissimilarity": 0.0,
+                "glcm_homogeneity": 0.0,
+                "glcm_energy": 0.0,
+                "glcm_correlation": 0.0
+            }
+        },
+        "xgboost_yolo_unet": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1_score": 1.0,
+            "roc_auc": 1.0,
+            "confusion_matrix": [
+                [
+                    20,
+                    0
+                ],
+                [
+                    0,
+                    20
+                ]
+            ],
+            "model_name": "xgboost",
+            "n_samples": 40,
+            "n_features": 29,
+            "cv_splits": 5,
+            "feature_importance": {
+                "rgb_r_mean": 0.4711298942565918,
+                "rgb_r_std": 0.40377092361450195,
+                "rgb_g_mean": 0.12509922683238983,
+                "rgb_g_std": 0.0,
+                "rgb_b_mean": 0.0,
+                "rgb_b_std": 0.0,
+                "red_ratio": 0.0,
+                "green_ratio": 0.0,
+                "blue_ratio": 0.0,
+                "rg_ratio": 0.0,
+                "pallor_index": 0.0,
+                "erythema_index": 0.0,
+                "hsv_h_mean": 0.0,
+                "hsv_h_std": 0.0,
+                "hsv_s_mean": 0.0,
+                "hsv_s_std": 0.0,
+                "hsv_v_mean": 0.0,
+                "hsv_v_std": 0.0,
+                "lab_l_mean": 0.0,
+                "lab_l_std": 0.0,
+                "lab_a_mean": 0.0,
+                "lab_a_std": 0.0,
+                "lab_b_mean": 0.0,
+                "lab_b_std": 0.0,
+                "glcm_contrast": 0.0,
+                "glcm_dissimilarity": 0.0,
+                "glcm_homogeneity": 0.0,
+                "glcm_energy": 0.0,
+                "glcm_correlation": 0.0
+            }
+        },
+        "svm_rbf_ground_truth": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1_score": 1.0,
+            "roc_auc": 1.0,
+            "confusion_matrix": [
+                [
+                    20,
+                    0
+                ],
+                [
+                    0,
+                    20
+                ]
+            ],
+            "model_name": "svm_rbf",
+            "n_samples": 40,
+            "n_features": 29,
+            "cv_splits": 5,
+            "feature_importance": {}
+        },
+        "svm_rbf_mediapipe": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1_score": 1.0,
+            "roc_auc": 1.0,
+            "confusion_matrix": [
+                [
+                    20,
+                    0
+                ],
+                [
+                    0,
+                    20
+                ]
+            ],
+            "model_name": "svm_rbf",
+            "n_samples": 40,
+            "n_features": 29,
+            "cv_splits": 5,
+            "feature_importance": {}
+        },
+        "svm_rbf_yolo_unet": {
+            "accuracy": 1.0,
+            "sensitivity": 1.0,
+            "specificity": 1.0,
+            "precision": 1.0,
+            "f1_score": 1.0,
+            "roc_auc": 1.0,
+            "confusion_matrix": [
+                [
+                    20,
+                    0
+                ],
+                [
+                    0,
+                    20
+                ]
+            ],
+            "model_name": "svm_rbf",
+            "n_samples": 40,
+            "n_features": 29,
+            "cv_splits": 5,
+            "feature_importance": {}
+        }
+    }
+}

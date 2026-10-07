@@ -1,3 +1,4 @@
+import os
 import time
 import cv2
 import numpy as np
@@ -5,7 +6,7 @@ from typing import Tuple, Dict, Any, Optional, List
 
 class MediaPipeConjunctivaExtractor:
     """
-    Ekstraktor Region of Interest (ROI) konjungtiva palpebra berbasis MediaPipe Face Mesh.
+    Ekstraktor Region of Interest (ROI) konjungtiva palpebra berbasis MediaPipe Face Landmarker (Tasks API).
     Menggunakan titik-titik landmark kelopak mata bawah (inferior palpebral eyelid)
     dan membentuk masker poligon yang dapat disesuaikan faktor ekspansinya.
     """
@@ -20,30 +21,31 @@ class MediaPipeConjunctivaExtractor:
 
     def __init__(
         self,
-        max_num_faces: int = 1,
-        refine_landmarks: bool = True,
-        min_detection_confidence: float = 0.5,
-        min_tracking_confidence: float = 0.5,
+        model_asset_path: str = "models/face_landmarker.task",
+        num_faces: int = 1,
         expansion_factor: float = 1.15
     ):
-        self.max_num_faces = max_num_faces
-        self.refine_landmarks = refine_landmarks
-        self.min_detection_confidence = min_detection_confidence
-        self.min_tracking_confidence = min_tracking_confidence
+        self.model_asset_path = os.path.abspath(model_asset_path)
+        self.num_faces = num_faces
         self.expansion_factor = expansion_factor
-        self._face_mesh = None
+        self._detector = None
 
-    def _get_face_mesh(self):
-        if self._face_mesh is None:
+    def _get_detector(self):
+        if self._detector is None:
             import mediapipe as mp
-            self._mp_face_mesh = mp.solutions.face_mesh
-            self._face_mesh = self._mp_face_mesh.FaceMesh(
-                max_num_faces=self.max_num_faces,
-                refine_landmarks=self.refine_landmarks,
-                min_detection_confidence=self.min_detection_confidence,
-                min_tracking_confidence=self.min_tracking_confidence
+            from mediapipe.tasks.python import vision, BaseOptions
+
+            if not os.path.exists(self.model_asset_path):
+                raise FileNotFoundError(f"Model file {self.model_asset_path} tidak ditemukan.")
+
+            options = vision.FaceLandmarkerOptions(
+                base_options=BaseOptions(model_asset_path=self.model_asset_path),
+                running_mode=vision.RunningMode.IMAGE,
+                num_faces=self.num_faces
             )
-        return self._face_mesh
+            self._detector = vision.FaceLandmarker.create_from_options(options)
+
+        return self._detector
 
     def extract_mask(self, image_bgr: np.ndarray) -> Tuple[np.ndarray, Dict[str, Any]]:
         """
@@ -62,27 +64,33 @@ class MediaPipeConjunctivaExtractor:
         start_time = time.perf_counter()
         image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
         
-        face_mesh = self._get_face_mesh()
-        results = face_mesh.process(image_rgb)
+        import mediapipe as mp
+        mp_image = mp.Image(image_format=mp.ImageFormat.SRGB, data=image_rgb)
+        detector = self._get_detector()
+        detection_result = detector.detect(mp_image)
         latency_ms = (time.perf_counter() - start_time) * 1000.0
 
-        if not results.multi_face_landmarks:
+        if not detection_result.face_landmarks or len(detection_result.face_landmarks) == 0:
+            # Fallback jika deteksi landmark tidak menemukan wajah (misal citra crop mata lokal)
             return mask, {
                 "detected": False,
                 "latency_ms": latency_ms,
                 "message": "Tidak ada wajah/landmarks terdeteksi"
             }
 
-        landmarks = results.multi_face_landmarks[0].landmark
+        landmarks = detection_result.face_landmarks[0]
 
         # Fungsi pembantu untuk membuat poligon dari daftar indeks
         def build_eye_polygon(eyelid_indices: List[int], sulcus_indices: List[int]) -> np.ndarray:
             eyelid_pts = []
             for idx in eyelid_indices:
-                pt = landmarks[idx]
-                eyelid_pts.append([int(pt.x * w), int(pt.y * h)])
+                if idx < len(landmarks):
+                    pt = landmarks[idx]
+                    eyelid_pts.append([int(pt.x * w), int(pt.y * h)])
 
-            # Ambil titik tengah dan perlebar sedikit ke arah bawah untuk menangkap konjungtiva eversi
+            if not eyelid_pts:
+                return np.array([], dtype=np.int32)
+
             pts_array = np.array(eyelid_pts, dtype=np.int32)
             centroid_y = np.mean(pts_array[:, 1])
 
@@ -90,25 +98,30 @@ class MediaPipeConjunctivaExtractor:
             for p in pts_array:
                 x, y = p
                 dy = y - centroid_y
-                # Ekspan ke bawah jika titik berada di bagian bawah kelopak
                 new_y = int(y + max(0, dy) * (self.expansion_factor - 1.0) * 1.5)
                 expanded_pts.append([x, new_y])
 
-            # Gabungkan dengan titik sulkus untuk menutup poligon kantung mata bawah
             sulcus_pts = []
             for idx in sulcus_indices:
-                pt = landmarks[idx]
-                sulcus_pts.append([int(pt.x * w), int(pt.y * h)])
+                if idx < len(landmarks):
+                    pt = landmarks[idx]
+                    sulcus_pts.append([int(pt.x * w), int(pt.y * h)])
 
-            all_pts = np.vstack([np.array(expanded_pts), np.array(sulcus_pts)])
+            if sulcus_pts:
+                all_pts = np.vstack([np.array(expanded_pts), np.array(sulcus_pts)])
+            else:
+                all_pts = np.array(expanded_pts)
+
             hull = cv2.convexHull(all_pts)
             return hull
 
         left_hull = build_eye_polygon(self.LEFT_LOWER_EYELID_INDICES, self.LEFT_SULCUS_INDICES)
         right_hull = build_eye_polygon(self.RIGHT_LOWER_EYELID_INDICES, self.RIGHT_SULCUS_INDICES)
 
-        cv2.fillPoly(mask, [left_hull], 255)
-        cv2.fillPoly(mask, [right_hull], 255)
+        if len(left_hull) > 0:
+            cv2.fillPoly(mask, [left_hull], 255)
+        if len(right_hull) > 0:
+            cv2.fillPoly(mask, [right_hull], 255)
 
         return mask, {
             "detected": True,
@@ -117,6 +130,6 @@ class MediaPipeConjunctivaExtractor:
         }
 
     def close(self):
-        if self._face_mesh is not None:
-            self._face_mesh.close()
-            self._face_mesh = None
+        if self._detector is not None:
+            self._detector.close()
+            self._detector = None

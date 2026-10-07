@@ -1,0 +1,28 @@
+# Python virtual environments & bytecode
+.venv/
+venv/
+ENV/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Models & Weights
+models/*.task
+models/*.pt
+models/*.pth
+models/*.onnx
+
+# Data & cache
+data/raw/images/
+data/raw/masks/
+data/raw/metadata.csv
+data/processed/
+data/splits/
+runs/
+.pytest_cache/
+
+# IDE & OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
