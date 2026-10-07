@@ -1,0 +1,3902 @@
+MATRIKS LITERATURE REVIEW
+Skrining
+ Awal 
+Penyakit
+ 
+Anemia
+ / 
+Kekurangan
+ 
+Hemoglobin
+Melalui
+ 
+Deteksi
+ Citra 
+Konjungtiva
+ Mata
+No. 1  —  
+CesLA
+: 
+Deteksi
+ 
+Anemia
+ Non-
+Invasif
+ pada 
+Remaja
+ Putri 
+Berbasis
+ Citra 
+Konjungtiva
+Citation (Author, Year)
+Ilmadina
+, H.Z., Nisa, J., 
+Apriliani
+, D., Anisa, L.N., & 
+Rakhmah
+, F.A. (2025)
+Judul
+ & 
+Jurnal
+CesLA
+: 
+Deteksi
+ 
+Anemia
+ Non-
+Invasif
+ pada 
+Remaja
+ Putri 
+Berbasis
+ Citra 
+Konjungtiva
+📰
+ 
+Jurnal
+ 
+Informatika
+: 
+Jurnal
+ 
+Pengembangan
+ IT (JPIT), Vol.10 No.3
+🔗
+ 
+http://ejournal.poltekharber.ac.id/index.php/informatika/article/view/8873
+ 
+Research Problem
+Skrining
+ 
+anemia
+ pada 
+remaja
+ 
+putri
+ di Indonesia 
+umumnya
+ 
+masih
+ 
+menggunakan
+ 
+metode
+ 
+invasif
+ (lab) yang mahal dan 
+tidak
+ 
+efisien
+; 
+belum
+ 
+ada
+ 
+sistem
+ non-
+invasif
+ 
+berbasis
+ 
+citra
+ 
+konjungtiva
+ yang 
+terintegrasi
+ 
+dengan
+ 
+pencegahan
+ stunting.
+Objective
+Membangun
+ 
+sistem
+ 
+deteksi
+ 
+anemia
+ non-
+invasif
+ pada 
+remaja
+ 
+putri
+ 
+menggunakan
+ 
+citra
+ 
+konjungtiva
+ 
+mata
+ 
+berbasis
+ CNN guna 
+mendukung
+ program 
+CesLA
+ (
+Cegah
+ Stunting 
+Lewat
+ 
+Anemia
+).
+Method
+Convolutional Neural Network (CNN) 
+dengan
+ 
+kombinasi
+ MobileNetV2 dan SVM, transfer learning pada 
+citra
+ 
+konjungtiva
+ palpebral.
+Dataset
+Citra 
+konjungtiva
+ 
+mata
+ 
+remaja
+ 
+putri
+ yang 
+dikumpulkan
+ di 
+Politeknik
+ Harapan Bersama Tegal.
+Sample Size
+Tidak 
+disebutkan
+ 
+secara
+ 
+eksplisit
+ di 
+halaman
+ 
+abstrak
+.
+Experimental Setup
+Pengambilan
+ 
+citra
+ 
+menggunakan
+ smartphone, 
+segmentasi
+ region 
+konjungtiva
+, 
+ekstraksi
+ 
+fitur
+ 
+warna
+ RGB/HSV, 
+klasifikasi
+ 
+dengan
+ model CNN transfer learning.
+Evaluation Metric
+Akurasi
+, Precision, Recall, F1-Score.
+Main Result
+Model 
+berhasil
+ 
+mendeteksi
+ 
+anemia
+ 
+dari
+ 
+citra
+ 
+konjungtiva
+ 
+dengan
+ 
+akurasi
+ 
+tinggi
+; 
+mendukung
+ program 
+CesLA
+ 
+sebagai
+ 
+alat
+ 
+skrining
+ 
+awal
+ 
+remaja
+ 
+putri
+.
+Contribution
+Sistem
+ 
+deteksi
+ 
+anemia
+ non-
+invasif
+ 
+berbasis
+ 
+citra
+ 
+konjungtiva
+ yang 
+dikaitkan
+ 
+langsung
+ 
+dengan
+ 
+pencegahan
+ stunting pada 
+remaja
+ 
+putri
+ Indonesia.
+Limitation
+Dataset 
+terbatas
+ pada 
+satu
+ 
+institusi
+; 
+belum
+ 
+divalidasi
+ pada 
+populasi
+ 
+umum
+ yang 
+lebih
+ 
+luas
+.
+Future Work
+Pengembangan
+ dataset yang 
+lebih
+ 
+besar
+ dan 
+beragam
+; 
+pengujian
+ pada platform mobile Android/iOS.
+Relevance to My Study
+Sangat 
+relevan
+ – 
+penelitian
+ 
+ini
+ 
+merupakan
+ 
+referensi
+ 
+utama
+ 
+untuk
+ 
+sistem
+ 
+skrining
+ 
+anemia
+ 
+berbasis
+ 
+citra
+ 
+konjungtiva
+.
+Potential Gap
+Perlu
+ 
+validasi
+ 
+lintas
+ 
+populasi
+; 
+belum
+ 
+ada
+ 
+modul
+ real-time 
+langsung
+ di 
+perangkat
+ mobile.
+No. 2  —  
+Hubungan
+ Jenis Kelamin, Status Gizi dan 
+Keadaan
+ 
+Konjungtiva
+ 
+dengan
+ 
+Kejadian
+ 
+Anemia
+ pada 
+Remaja
+ 
+Sekolah
+Citation (Author, Year)
+Natasha, L.N. & 
+Suparti
+, S. (2024)
+Judul
+ & 
+Jurnal
+Hubungan
+ Jenis Kelamin, Status Gizi dan 
+Keadaan
+ 
+Konjungtiva
+ 
+dengan
+ 
+Kejadian
+ 
+Anemia
+ pada 
+Remaja
+ 
+Sekolah
+📰
+ 
+Jurnal
+ 
+Ilmiah
+ Kesehatan Keperawatan (JIKK), Vol.20 No.1, pp.1-9
+🔗
+ 
+https://ejournal.unimugo.ac.id/index.php/JIKK/article/view/1340
+ 
+Research Problem
+Angka 
+anemia
+ pada 
+remaja
+ 
+sekolah
+ di Indonesia 
+masih
+ 
+tinggi
+, 
+namun
+ 
+korelasi
+ 
+antara
+ 
+keadaan
+ 
+konjungtiva
+ (
+pucat
+/
+tidak
+) 
+dengan
+ 
+kejadian
+ 
+anemia
+ 
+belum
+ 
+banyak
+ 
+diteliti
+ 
+secara
+ 
+khusus
+ di 
+tingkat
+ 
+sekolah
+.
+Objective
+Menganalisis
+ 
+hubungan
+ 
+antara
+ 
+jenis
+ 
+kelamin
+, status 
+gizi
+, dan 
+keadaan
+ 
+konjungtiva
+ 
+dengan
+ 
+kejadian
+ 
+anemia
+ pada 
+remaja
+ di 
+sekolah
+.
+Method
+Penelitian
+ 
+deskriptif
+ 
+korelasional
+; 
+pemeriksaan
+ 
+fisik
+ 
+konjungtiva
+ (
+klinis
+) + uji 
+laboratorium
+ 
+hemoglobin
+; 
+analisis
+ chi-square.
+Dataset
+Remaja
+ 
+sekolah
+ di wilayah 
+Purwokerto
+.
+Sample Size
+Tidak 
+disebutkan
+ 
+secara
+ 
+eksplisit
+ (
+perlu
+ 
+akses
+ PDF).
+Experimental Setup
+Observasi
+ 
+klinis
+ 
+konjungtiva
+ palpebral inferior dan 
+pengukuran
+ Hb 
+dengan
+ 
+alat
+ hemoglobinometer.
+Evaluation Metric
+Nilai p dan 
+koefisien
+ 
+korelasi
+ (chi-square).
+Main Result
+Terdapat
+ 
+hubungan
+ 
+signifikan
+ 
+antara
+ 
+keadaan
+ 
+konjungtiva
+ 
+pucat
+ 
+dengan
+ 
+kejadian
+ 
+anemia
+; 
+jenis
+ 
+kelamin
+ 
+perempuan
+ dan status 
+gizi
+ 
+kurang
+ 
+berkontribusi
+ pada 
+risiko
+ 
+anemia
+.
+Contribution
+Validasi
+ 
+klinis
+ 
+bahwa
+ 
+konjungtiva
+ 
+pucat
+ 
+merupakan
+ 
+indikator
+ yang 
+bermakna
+ 
+untuk
+ 
+skrining
+ 
+anemia
+ pada 
+remaja
+ 
+sekolah
+.
+Limitation
+Metode 
+pemeriksaan
+ 
+konjungtiva
+ 
+masih
+ 
+bersifat
+ visual 
+klinis
+ oleh 
+tenaga
+ 
+kesehatan
+, 
+belum
+ 
+menggunakan
+ 
+pengolahan
+ 
+citra
+ digital.
+Future Work
+Integrasi 
+dengan
+ 
+teknologi
+ 
+pengolahan
+ 
+citra
+ 
+untuk
+ 
+otomatisasi
+ 
+penilaian
+ 
+konjungtiva
+.
+Relevance to My Study
+Relevan
+ 
+sebagai
+ 
+dasar
+ 
+klinis
+ 
+bahwa
+ 
+konjungtiva
+ 
+pucat
+ valid 
+sebagai
+ marker 
+anemia
+.
+Potential Gap
+Tidak 
+menggunakan
+ 
+pendekatan
+ digital/
+komputasi
+; 
+hanya
+ 
+penilaian
+ 
+subjektif
+ 
+klinis
+.
+No. 3  —  
+Deteksi
+ 
+Anemia
+ 
+melalui
+ 
+Klasifikasi
+ Citra 
+Konjungtiva
+ 
+Menggunakan
+ Transfer Learning 
+AlexNet
+ CNN
+Citation (Author, Year)
+Syafruddin, A., et al. (2023)
+Judul
+ & 
+Jurnal
+Deteksi
+ 
+Anemia
+ 
+melalui
+ 
+Klasifikasi
+ Citra 
+Konjungtiva
+ 
+Menggunakan
+ Transfer Learning 
+AlexNet
+ CNN
+📰
+ Media 
+Elektrik
+ (
+Jurnal
+ Teknik Elektro UNM), Vol.20 No.2
+🔗
+ 
+https://journal.unm.ac.id/index.php/mediaelektrik/article/view/5538
+ 
+Research Problem
+Metode 
+pemeriksaan
+ 
+anemia
+ 
+berbasis
+ 
+laboratorium
+ 
+tidak
+ 
+efisien
+ 
+untuk
+ 
+skrining
+ 
+massal
+; 
+diperlukan
+ 
+metode
+ non-
+invasif
+ 
+otomatis
+ 
+berbasis
+ 
+citra
+ 
+konjungtiva
+.
+Objective
+Mengklasifikasikan
+ 
+kondisi
+ 
+anemia
+ 
+dari
+ 
+citra
+ 
+konjungtiva
+ 
+menggunakan
+ transfer learning 
+dengan
+ 
+arsitektur
+ 
+AlexNet
+ CNN.
+Method
+Transfer Learning 
+dengan
+ 
+AlexNet
+ CNN; fine-tuning pada dataset 
+citra
+ 
+konjungtiva
+.
+Dataset
+Dataset 
+citra
+ 
+konjungtiva
+ palpebral (
+dikumpulkan
+ 
+dari
+ 
+subjek
+ 
+anemia
+ dan non-
+anemia
+).
+Sample Size
+Tidak 
+disebutkan
+ di 
+abstrak
+ (
+akses
+ PDF 
+diperlukan
+).
+Experimental Setup
+Pengambilan
+ 
+citra
+ 
+dengan
+ 
+kamera
+, preprocessing (resize, 
+normalisasi
+), transfer learning 
+AlexNet
+, 
+evaluasi
+ train/test split.
+Evaluation Metric
+Akurasi
+, Precision, Recall, F1-Score.
+Main Result
+Transfer learning 
+AlexNet
+ 
+mencapai
+ 
+akurasi
+ yang 
+baik
+ 
+dalam
+ 
+mengklasifikasikan
+ 
+anemia
+ 
+dari
+ 
+citra
+ 
+konjungtiva
+.
+Contribution
+Penerapan
+ 
+AlexNet
+ 
+sebagai
+ model transfer learning 
+pertama
+ 
+untuk
+ 
+deteksi
+ 
+anemia
+ via 
+konjungtiva
+ di Indonesia.
+Limitation
+AlexNet
+ 
+relatif
+ 
+besar
+ dan 
+lambat
+ 
+dibanding
+ 
+arsitektur
+ modern (
+MobileNet
+, 
+EfficientNet
+); dataset 
+relatif
+ 
+kecil
+.
+Future Work
+Perbandingan
+ 
+dengan
+ 
+arsitektur
+ CNN modern; 
+penerapan
+ di mobile app.
+Relevance to My Study
+Relevan
+ 
+sebagai
+ 
+acuan
+ 
+penggunaan
+ transfer learning CNN 
+untuk
+ 
+klasifikasi
+ 
+konjungtiva
+.
+Potential Gap
+Arsitektur
+ 
+AlexNet
+ 
+sudah
+ 
+usang
+; 
+belum
+ 
+ada
+ 
+validasi
+ 
+klinis
+ 
+lintas
+ 
+rumah
+ 
+sakit
+.
+No. 4  —  An Intelligent Non-Invasive System for Automated Diagnosis of 
+Anemia
+ Exploiting a Novel Dataset
+Citation (Author, Year)
+Dimauro, G., et al. (2023)
+Judul
+ & 
+Jurnal
+An Intelligent Non-Invasive System for Automated Diagnosis of 
+Anemia
+ Exploiting a Novel Dataset
+📰
+ Artificial Intelligence in Medicine, Vol.136, p.102477
+🔗
+ 
+https://www.sciencedirect.com/science/ar
+t
+icle/pii/S0933365722002457
+ 
+Research Problem
+Diagnosis 
+anemia
+ 
+secara
+ 
+invasif
+ 
+menimbulkan
+ 
+ketidaknyamanan
+ dan 
+biaya
+ 
+tinggi
+; 
+sistem
+ non-
+invasif
+ 
+berbasis
+ 
+citra
+ 
+belum
+ 
+memiliki
+ dataset 
+standar
+ yang 
+komprehensif
+.
+Objective
+Membangun
+ 
+sistem
+ 
+cerdas
+ diagnosis 
+anemia
+ non-
+invasif
+ 
+berbasis
+ 
+citra
+ 
+menggunakan
+ dataset 
+baru
+ yang 
+dikurasi
+ 
+secara
+ 
+ilmiah
+.
+Method
+Deep learning CNN + 
+analisis
+ 
+warna
+ pada 
+citra
+ 
+konjungtiva
+ dan kuku; dataset 
+baru
+ 
+dengan
+ label ground-truth Hb.
+Dataset
+Dataset 
+baru
+ multi-modal (
+konjungtiva
+, kuku, 
+bibir
+) 
+dengan
+ 
+pengukuran
+ Hb 
+sebagai
+ ground-truth.
+Sample Size
+Lebih
+ 
+dari
+ 100 
+pasien
+.
+Experimental Setup
+Pengambilan
+ 
+citra
+ 
+terkontrol
+; 
+augmentasi
+ data; training deep learning 
+dengan
+ 
+validasi
+ 
+silang
+.
+Evaluation Metric
+MAE (Mean Absolute Error), RMSE, 
+Korelasi
+ Pearson 
+dengan
+ Hb 
+aktual
+.
+Main Result
+Sistem
+ 
+mencapai
+ 
+korelasi
+ 
+tinggi
+ 
+antara
+ 
+prediksi
+ Hb dan 
+nilai
+ 
+aktual
+; 
+performa
+ 
+melampaui
+ baseline.
+Contribution
+Penyediaan
+ dataset 
+publik
+ 
+anemia
+ non-
+invasif
+ 
+pertama
+ yang 
+komprehensif
+ dan 
+sistem
+ diagnosis 
+otomatis
+.
+Limitation
+Dataset 
+dikumpulkan
+ di 
+satu
+ 
+institusi
+ Italia; 
+variasi
+ 
+etnis
+ dan 
+kondisi
+ 
+pencahayaan
+ 
+terbatas
+.
+Future Work
+Validasi
+ multi-
+center
+ dan 
+diversifikasi
+ 
+etnis
+ dataset.
+Relevance to My Study
+Relevan
+ 
+sebagai
+ 
+referensi
+ 
+pembuatan
+ dataset dan 
+sistem
+ diagnosis 
+anemia
+ non-
+invasif
+ 
+menggunakan
+ deep learning.
+Potential Gap
+Perlu
+ 
+validasi
+ pada 
+populasi
+ Asia Tenggara; 
+belum
+ 
+dikembangkan
+ 
+sebagai
+ 
+aplikasi
+ mobile.
+No. 5  —  Detection of Anaemia Using Medical Images: A Comparative Study of Machine Learning Algorithms – A Systematic Literature Review
+Citation (Author, Year)
+Asare, J.W., 
+Appiahene
+, P., & 
+Donkoh
+, E.T. (2023)
+Judul
+ & 
+Jurnal
+Detection of Anaemia Using Medical Images: A Comparative Study of Machine Learning Algorithms – A Systematic Literature Review
+📰
+ Informatics in Medicine Unlocked, Vol.40, p.101283
+🔗
+ 
+https://www.sciencedirect.com/science/article/pii/S2352914823000850
+ 
+Research Problem
+Tidak 
+ada
+ 
+konsensus
+ 
+tentang
+ 
+algoritma
+ machine learning 
+terbaik
+ 
+untuk
+ 
+deteksi
+ 
+anemia
+ 
+dari
+ 
+citra
+ 
+medis
+; review 
+sistematis
+ 
+diperlukan
+.
+Objective
+Melakukan
+ review 
+sistematis
+ 
+terhadap
+ 
+algoritma
+ ML 
+untuk
+ 
+deteksi
+ 
+anemia
+ 
+dari
+ 
+citra
+ 
+medis
+ 
+termasuk
+ 
+citra
+ 
+konjungtiva
+.
+Method
+Systematic Literature Review (SLR) 
+dengan
+ PRISMA; 
+analisis
+ 
+komparasi
+ 
+berbagai
+ 
+metode
+ ML.
+Dataset
+Meta-
+analisis
+ 
+dari
+ 30+ 
+studi
+ yang 
+dipublikasikan
+ (2010-2023).
+Sample Size
+Review 
+dari
+ 30+ paper 
+dengan
+ total 
+ribuan
+ 
+sampel
+ 
+agregat
+.
+Experimental Setup
+Seleksi
+ 
+artikel
+ PRISMA; 
+ekstraksi
+ data 
+metode
+, dataset, 
+metrik
+ 
+evaluasi
+.
+Evaluation Metric
+Perbandingan
+ 
+akurasi
+, 
+sensitivitas
+, 
+spesifisitas
+, AUC 
+dari
+ 
+berbagai
+ 
+studi
+.
+Main Result
+CNN dan SVM 
+menunjukkan
+ 
+performa
+ 
+terbaik
+; 
+citra
+ 
+konjungtiva
+ 
+adalah
+ 
+modalitas
+ paling 
+efektif
+ 
+untuk
+ 
+skrining
+ 
+anemia
+ non-
+invasif
+.
+Contribution
+Peta 
+komprehensif
+ 
+metode
+ ML 
+terbaik
+ 
+untuk
+ 
+deteksi
+ 
+anemia
+ 
+dari
+ 
+citra
+ 
+medis
+.
+Limitation
+Heterogenitas
+ dataset 
+antar
+ 
+studi
+ yang 
+direview
+ 
+cukup
+ 
+tinggi
+; 
+sulit
+ 
+membandingkan
+ 
+langsung
+.
+Future Work
+Standarisasi
+ 
+protokol
+ dataset 
+anemia
+; 
+pengembangan
+ benchmark 
+terbuka
+.
+Relevance to My Study
+Sangat 
+relevan
+ 
+sebagai
+ 
+landasan
+ 
+teoretis
+ 
+komparasi
+ 
+metode
+ dan 
+justifikasi
+ 
+pemilihan
+ CNN 
+untuk
+ 
+penelitian
+ 
+ini
+.
+Potential Gap
+Review 
+bersifat
+ 
+retrospektif
+; 
+tidak
+ 
+menghasilkan
+ model 
+baru
+.
+No. 6  —  Non-Invasive Detection of 
+Anemia
+ Using Lip Mucosa Images Transfer Learning Convolutional Neural Networks
+Citation (Author, Year)
+Mansour, M., 
+Donmez
+, T.B., Kutlu, M., & Mahmud, S. (2023)
+Judul
+ & 
+Jurnal
+Non-Invasive Detection of 
+Anemia
+ Using Lip Mucosa Images Transfer Learning Convolutional Neural Networks
+📰
+ Frontiers in Big Data, Vol.6, p.1291329
+🔗
+ 
+https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2023.1291329/full
+ 
+Research Problem
+Deteksi
+ 
+anemia
+ non-
+invasif
+ 
+selain
+ 
+konjungtiva
+ 
+belum
+ 
+dieksplorasi
+ 
+melalui
+ 
+citra
+ 
+mukosa
+ 
+bibir
+; 
+potensi
+ transfer learning CNN 
+untuk
+ 
+citra
+ 
+ini
+ 
+belum
+ 
+diuji
+.
+Objective
+Mendeteksi
+ 
+anemia
+ 
+secara
+ non-
+invasif
+ 
+dari
+ 
+citra
+ 
+mukosa
+ 
+bibir
+ 
+menggunakan
+ transfer learning CNN.
+Method
+Transfer Learning CNN (VGG16, ResNet50, InceptionV3, 
+DenseNet
+) pada 
+citra
+ 
+mukosa
+ 
+bibir
+.
+Dataset
+Citra 
+mukosa
+ 
+bibir
+ 
+dari
+ 
+pasien
+ 
+anemia
+ dan non-
+anemia
+.
+Sample Size
+Ratusan
+ 
+gambar
+ (detail di paper 
+lengkap
+).
+Experimental Setup
+Pengambilan
+ 
+citra
+ 
+bibir
+ 
+terkontrol
+; preprocessing; fine-tuning 
+beberapa
+ 
+arsitektur
+ CNN; k-fold cross validation.
+Evaluation Metric
+Akurasi
+, Precision, Recall, F1-Score, AUC-ROC.
+Main Result
+DenseNet
+ 
+mencapai
+ 
+akurasi
+ 
+tertinggi
+ >90%; transfer learning 
+efektif
+ 
+untuk
+ domain 
+citra
+ 
+mukosa
+ 
+bibir
+.
+Contribution
+Membuktikan
+ 
+mukosa
+ 
+bibir
+ 
+sebagai
+ 
+alternatif
+ 
+modalitas
+ 
+deteksi
+ 
+anemia
+ non-
+invasif
+; 
+perbandingan
+ 
+arsitektur
+ CNN.
+Limitation
+Modalitas
+ 
+bibir
+ 
+berbeda
+ 
+dari
+ 
+konjungtiva
+; 
+tidak
+ 
+semua
+ 
+kondisi
+ 
+klinis
+ (
+bibir
+ 
+kering
+, 
+lipstik
+) 
+dikontrol
+.
+Future Work
+Integrasi multi-modal (
+bibir
+ + 
+konjungtiva
+ + kuku) 
+untuk
+ 
+akurasi
+ 
+lebih
+ 
+tinggi
+.
+Relevance to My Study
+Relevan
+ 
+sebagai
+ 
+perbandingan
+ transfer learning CNN pada 
+modalitas
+ 
+berbeda
+; insight 
+arsitektur
+ 
+terbaik
+.
+Potential Gap
+Fokus
+ pada 
+bibir
+, 
+bukan
+ 
+konjungtiva
+; multi-modal 
+belum
+ 
+diterapkan
+.
+No. 7  —  NiADA: Smartphone-Based Application with AI to Measure Blood 
+Hemoglobin
+ in Real-Time
+Citation (Author, Year)
+Das, S., Ahamed, F., Das, A., Das, D., Nandi, J., & Banerjee, K. (2024)
+Judul
+ & 
+Jurnal
+NiADA: Smartphone-Based Application with AI to Measure Blood 
+Hemoglobin
+ in Real-Time
+📰
+ Cureus, Vol.16 No.7
+🔗
+ 
+https://www.cureus.com/articles/270040-niada-non-invasive-anemia-detection-app-a-smartphone-based-application-with-artificial-intelligence-to-measure-blood-hemoglobin-in-real-time-a-clinical-validation
+ 
+Research Problem
+Pengukuran
+ 
+hemoglobin
+ 
+secara
+ 
+konvensional
+ 
+membutuhkan
+ 
+alat
+ lab; 
+aplikasi
+ smartphone 
+berbasis
+ AI 
+untuk
+ 
+pengukuran
+ Hb real-time 
+belum
+ 
+divalidasi
+ 
+secara
+ 
+klinis
+ 
+komprehensif
+.
+Objective
+Mengembangkan
+ dan 
+memvalidasi
+ 
+aplikasi
+ smartphone NiADA yang 
+menggunakan
+ AI 
+untuk
+ 
+mengukur
+ Hb 
+dari
+ 
+citra
+ 
+konjungtiva
+ 
+secara
+ real-time.
+Method
+AI 
+berbasis
+ 
+pengolahan
+ 
+citra
+ RGB 
+dari
+ 
+kamera
+ smartphone; 
+algoritma
+ 
+regresi
+ 
+untuk
+ 
+estimasi
+ 
+nilai
+ Hb.
+Dataset
+Pasien
+ di setting 
+klinis
+ India 
+dengan
+ 
+pengukuran
+ Hb gold standard.
+Sample Size
+Validasi
+ 
+klinis
+ pada 
+ratusan
+ 
+pasien
+.
+Experimental Setup
+Pengguna
+ 
+mengambil
+ 
+foto
+ 
+konjungtiva
+ 
+menggunakan
+ smartphone; NiADA 
+memproses
+ dan 
+memberikan
+ 
+estimasi
+ Hb real-time.
+Evaluation Metric
+Bland-Altman analysis, RMSE, 
+Korelasi
+ Pearson 
+dengan
+ Hb 
+laboratorium
+.
+Main Result
+NiADA 
+menunjukkan
+ 
+korelasi
+ 
+kuat
+ 
+dengan
+ Hb lab; feasible 
+sebagai
+ 
+alat
+ 
+skrining
+ Hb real-time 
+berbasis
+ smartphone.
+Contribution
+Validasi
+ 
+klinis
+ 
+pertama
+ 
+aplikasi
+ smartphone AI 
+untuk
+ 
+pengukuran
+ Hb real-time 
+dari
+ 
+citra
+ 
+konjungtiva
+.
+Limitation
+Akurasi
+ 
+dipengaruhi
+ 
+kondisi
+ 
+pencahayaan
+; 
+belum
+ 
+diuji
+ pada 
+semua
+ 
+kelompok
+ 
+etnis
+.
+Future Work
+Pengembangan
+ 
+versi
+ 
+internasional
+; 
+integrasi
+ 
+dengan
+ 
+rekam
+ 
+medis
+ 
+elektronik
+.
+Relevance to My Study
+Sangat 
+relevan
+ – 
+validasi
+ 
+aplikasi
+ smartphone AI 
+untuk
+ 
+deteksi
+ Hb 
+dari
+ 
+konjungtiva
+.
+Potential Gap
+Aplikasi
+ 
+komersial
+; 
+belum
+ 
+ada
+ 
+versi
+ open-source 
+untuk
+ 
+penelitian
+ 
+akademis
+.
+No. 8  —  
+Deteksi
+ 
+Anemia
+ pada Ibu Hamil 
+Menggunakan
+ Metode Non-
+Invasif
+ 
+Berbasis
+ 
+Kecerdasan
+ 
+Artifisial
+Citation (Author, Year)
+Hajrianti, S., 
+Widyawati
+, M.N., & 
+Kurnianingsih
+, K. (2023)
+Judul
+ & 
+Jurnal
+Deteksi
+ 
+Anemia
+ pada Ibu Hamil 
+Menggunakan
+ Metode Non-
+Invasif
+ 
+Berbasis
+ 
+Kecerdasan
+ 
+Artifisial
+📰
+ 
+Jurnal
+ Telenursing (JOTING), Vol.5 No.2, pp.3568-3577
+🔗
+ 
+https://journal.ipm2kpe.or.id/index.php/JOTING/article/view/7468
+ 
+Research Problem
+Deteksi
+ 
+anemia
+ pada 
+ibu
+ 
+hamil
+ di Indonesia 
+masih
+ 
+bergantung
+ pada 
+pemeriksaan
+ 
+invasif
+; 
+diperlukan
+ 
+metode
+ AI non-
+invasif
+ yang 
+mudah
+ 
+diakses
+ di 
+fasilitas
+ 
+kesehatan
+ primer.
+Objective
+Mendeteksi
+ 
+anemia
+ pada 
+ibu
+ 
+hamil
+ 
+menggunakan
+ 
+metode
+ non-
+invasif
+ 
+berbasis
+ 
+kecerdasan
+ 
+artifisial
+ 
+melalui
+ 
+analisis
+ 
+citra
+ 
+mata
+/
+konjungtiva
+.
+Method
+Machine learning 
+berbasis
+ 
+citra
+; 
+analisis
+ 
+fitur
+ 
+warna
+ 
+konjungtiva
+.
+Dataset
+Ibu 
+hamil
+ di 
+puskesmas
+/
+klinik
+ Indonesia.
+Sample Size
+Tidak 
+disebutkan
+ di 
+abstrak
+.
+Experimental Setup
+Pengambilan
+ 
+citra
+ 
+konjungtiva
+; 
+ekstraksi
+ 
+fitur
+; 
+klasifikasi
+ 
+anemia
+/non-
+anemia
+.
+Evaluation Metric
+Akurasi
+, 
+Sensitivitas
+, 
+Spesifisitas
+.
+Main Result
+Metode non-
+invasif
+ AI 
+berhasil
+ 
+mendeteksi
+ 
+anemia
+ pada 
+ibu
+ 
+hamil
+ 
+dengan
+ 
+tingkat
+ 
+akurasi
+ 
+memuaskan
+.
+Contribution
+Penerapan
+ AI 
+untuk
+ 
+skrining
+ 
+anemia
+ 
+ibu
+ 
+hamil
+ di Indonesia 
+menggunakan
+ 
+pendekatan
+ non-
+invasif
+.
+Limitation
+Ukuran
+ 
+sampel
+ 
+terbatas
+; 
+kondisi
+ 
+klinis
+ 
+spesifik
+ 
+ibu
+ 
+hamil
+.
+Future Work
+Perluasan
+ 
+sampel
+ dan 
+pengujian
+ di 
+puskesmas
+ 
+terpencil
+.
+Relevance to My Study
+Relevan
+ – 
+konteks
+ Indonesia, 
+fokus
+ 
+kelompok
+ 
+rentan
+ 
+anemia
+ (
+ibu
+ 
+hamil
+).
+Potential Gap
+Kelompok
+ target 
+khusus
+ (
+ibu
+ 
+hamil
+); 
+tidak
+ 
+mencakup
+ 
+remaja
+ 
+atau
+ 
+umum
+.
+No. 9  —  A Visionary Approach to 
+Anemia
+ Detection: Integrating Eye Condition Data and Machine Learning
+Citation (Author, Year)
+Priyadarshini, M.A., et al. (2024)
+Judul
+ & 
+Jurnal
+A Visionary Approach to 
+Anemia
+ Detection: Integrating Eye Condition Data and Machine Learning
+📰
+ Proceedings ICCIET 2024, Atlantis Press International BV, pp.781-793
+🔗
+ 
+https://www.atlantis-press.com/proceedings/icciet-24/126003571
+ 
+Research Problem
+Deteksi
+ 
+anemia
+ 
+berbasis
+ 
+kondisi
+ 
+mata
+ 
+belum
+ 
+diintegrasikan
+ 
+secara
+ 
+sistematis
+ 
+dengan
+ 
+berbagai
+ 
+algoritma
+ machine learning 
+untuk
+ 
+mendapatkan
+ 
+perbandingan
+ 
+menyeluruh
+.
+Objective
+Mengintegrasikan
+ data 
+kondisi
+ 
+mata
+ (
+konjungtiva
+) 
+dengan
+ 
+berbagai
+ 
+algoritma
+ ML 
+untuk
+ 
+deteksi
+ 
+anemia
+ yang optimal.
+Method
+Komparasi
+ multiple ML algorithms (SVM, Random Forest, KNN, Naive Bayes, Neural Network) pada 
+fitur
+ 
+citra
+ 
+konjungtiva
+.
+Dataset
+Dataset 
+kondisi
+ 
+mata
+/
+konjungtiva
+ 
+pasien
+ 
+anemia
+ dan non-
+anemia
+.
+Sample Size
+Tidak 
+disebutkan
+ 
+secara
+ 
+spesifik
+.
+Experimental Setup
+Ekstraksi
+ 
+fitur
+ 
+dari
+ 
+citra
+ 
+mata
+; 
+pelatihan
+ dan 
+perbandingan
+ multiple classifier.
+Evaluation Metric
+Akurasi
+, Precision, Recall, F1-Score per 
+algoritma
+.
+Main Result
+Pendekatan
+ 
+integrasi
+ data 
+mata
+ + ML 
+menunjukkan
+ 
+hasil
+ 
+deteksi
+ 
+anemia
+ yang 
+menjanjikan
+; 
+satu
+ 
+algoritma
+ 
+mengungguli
+ yang lain.
+Contribution
+Komparasi
+ 
+komprehensif
+ 
+algoritma
+ ML 
+untuk
+ 
+deteksi
+ 
+anemia
+ 
+dari
+ data 
+mata
+.
+Limitation
+Data 
+kondisi
+ 
+mata
+ yang 
+digunakan
+ 
+belum
+ 
+spesifik
+ 
+hanya
+ 
+konjungtiva
+; dataset 
+masih
+ 
+kecil
+.
+Future Work
+Deep learning dan 
+pengembangan
+ 
+sistem
+ real-time.
+Relevance to My Study
+Relevan
+ 
+sebagai
+ 
+referensi
+ 
+pemilihan
+ 
+algoritma
+ 
+terbaik
+ 
+untuk
+ 
+deteksi
+ 
+anemia
+ 
+dari
+ data 
+mata
+.
+Potential Gap
+Belum 
+menggunakan
+ deep learning; dataset 
+masih
+ 
+kecil
+ dan 
+tidak
+ ter-
+standarisasi
+.
+No. 10  —  
+Sistem
+ 
+Informasi
+ 
+Pengukuran
+ Kadar 
+Hemoglobin
+ Non-
+Invasif
+ 
+Berbasis
+ Android 
+Menggunakan
+ 
+Algoritma
+ Extreme Gradient Boosting
+Citation (Author, Year)
+Syarifuddin, S.D.S., 
+Khurniawan
+, A., Munadi, R., & Sussi, S. (2023)
+Judul
+ & 
+Jurnal
+Sistem
+ 
+Informasi
+ 
+Pengukuran
+ Kadar 
+Hemoglobin
+ Non-
+Invasif
+ 
+Berbasis
+ Android 
+Menggunakan
+ 
+Algoritma
+ Extreme Gradient Boosting
+📰
+ 
+Komputika
+: 
+Jurnal
+ 
+Sistem
+ 
+Komputer
+, Vol.12 No.1, pp.13-23
+🔗
+ 
+https://ojs.unikom.ac.id/index.php/komputika/article/view/5049
+ 
+Research Problem
+Pengukuran
+ 
+hemoglobin
+ 
+secara
+ 
+invasif
+ 
+menghambat
+ 
+skrining
+ 
+massal
+; 
+diperlukan
+ 
+sistem
+ android non-
+invasif
+ 
+berbasis
+ 
+analisis
+ 
+warna
+ 
+citra
+ 
+biologis
+.
+Objective
+Membangun
+ 
+sistem
+ 
+informasi
+ Android 
+untuk
+ 
+pengukuran
+ 
+kadar
+ Hb non-
+invasif
+ 
+menggunakan
+ 
+algoritma
+ 
+XGBoost
+.
+Method
+Extreme Gradient Boosting (
+XGBoost
+); 
+analisis
+ 
+nilai
+ RGB 
+dari
+ 
+citra
+ 
+kamera
+ smartphone.
+Dataset
+Citra 
+biologis
+ (
+konjungtiva
+/
+jari
+) 
+dari
+ 
+responden
+ 
+dengan
+ 
+pengukuran
+ Hb 
+aktual
+.
+Sample Size
+Tidak 
+disebutkan
+ di 
+abstrak
+.
+Experimental Setup
+Aplikasi
+ Android; 
+kamera
+ smartphone; 
+ekstraksi
+ 
+nilai
+ RGB; 
+prediksi
+ Hb 
+dengan
+ 
+XGBoost
+.
+Evaluation Metric
+MAE, RMSE, 
+korelasi
+ Pearson.
+Main Result
+XGBoost
+ 
+menunjukkan
+ 
+performa
+ 
+prediksi
+ Hb yang 
+baik
+; 
+sistem
+ Android feasible 
+untuk
+ 
+penggunaan
+ 
+lapangan
+.
+Contribution
+Sistem
+ Android non-
+invasif
+ 
+pertama
+ 
+menggunakan
+ 
+XGBoost
+ 
+untuk
+ 
+estimasi
+ Hb 
+dari
+ 
+citra
+ smartphone.
+Limitation
+Akurasi
+ 
+dipengaruhi
+ 
+kualitas
+ 
+kamera
+ dan 
+pencahayaan
+; 
+XGBoost
+ 
+kalah
+ vs deep learning 
+untuk
+ data 
+citra
+.
+Future Work
+Integrasi deep learning; 
+pengujian
+ di 
+kondisi
+ 
+lapangan
+ yang 
+beragam
+.
+Relevance to My Study
+Relevan
+ – 
+sistem
+ non-
+invasif
+ Android 
+untuk
+ 
+estimasi
+ Hb; 
+inspirasi
+ 
+implementasi
+ mobile.
+Potential Gap
+Menggunakan
+ 
+XGBoost
+ 
+bukan
+ deep learning; 
+belum
+ 
+menggunakan
+ 
+citra
+ 
+konjungtiva
+ 
+secara
+ 
+eksplisit
+.
+No. 11  —  Deep Learning Model-Based Detection of 
+Anemia
+ from Conjunctiva Images
+Citation (Author, Year)
+Poon, L.C.Y., et al. (2024)
+Judul
+ & 
+Jurnal
+Deep Learning Model-Based Detection of 
+Anemia
+ from Conjunctiva Images
+📰
+ PubMed – Indexed International Journal (2024)
+🔗
+ 
+https://pubmed.ncbi.nlm.nih.gov/39973037/
+ 
+Research Problem
+Deteksi
+ 
+anemia
+ 
+dari
+ 
+citra
+ 
+konjungtiva
+ 
+menggunakan
+ deep learning 
+memerlukan
+ 
+validasi
+ model yang robust dan dataset yang 
+memadai
+.
+Objective
+Mengembangkan
+ dan 
+memvalidasi
+ model deep learning 
+untuk
+ 
+mendeteksi
+ 
+anemia
+ 
+secara
+ 
+akurat
+ 
+dari
+ 
+citra
+ 
+konjungtiva
+.
+Method
+Deep Learning (CNN) – model yang 
+dioptimasi
+ 
+khusus
+ 
+untuk
+ 
+citra
+ 
+konjungtiva
+.
+Dataset
+Dataset 
+citra
+ 
+konjungtiva
+ 
+dengan
+ label Hb 
+laboratorium
+.
+Sample Size
+Dataset yang 
+memadai
+ 
+untuk
+ training dan 
+validasi
+ model (detail di paper).
+Experimental Setup
+Pengumpulan
+ 
+citra
+ 
+konjungtiva
+ 
+terkontrol
+; preprocessing; training CNN; 
+validasi
+ pada test set 
+independen
+.
+Evaluation Metric
+Akurasi
+, AUC-ROC, 
+Sensitivitas
+, 
+Spesifisitas
+.
+Main Result
+Model deep learning 
+mendeteksi
+ 
+anemia
+ 
+dari
+ 
+konjungtiva
+ 
+dengan
+ AUC 
+tinggi
+; 
+performa
+ 
+klinis
+ yang 
+menjanjikan
+.
+Contribution
+Model deep learning 
+tervalidasi
+ 
+untuk
+ 
+deteksi
+ 
+anemia
+ 
+dari
+ 
+konjungtiva
+; benchmark 
+baru
+.
+Limitation
+Validasi
+ pada 
+populasi
+ 
+terbatas
+; 
+perlu
+ uji 
+prospektif
+ multi-
+center
+.
+Future Work
+Validasi
+ multi-
+center
+; 
+integrasi
+ 
+ke
+ platform 
+klinis
+.
+Relevance to My Study
+Sangat 
+relevan
+ – 
+langsung
+ 
+membahas
+ deep learning 
+untuk
+ 
+deteksi
+ 
+anemia
+ 
+dari
+ 
+citra
+ 
+konjungtiva
+.
+Potential Gap
+Validasi
+ 
+masih
+ 
+terbatas
+; 
+belum
+ 
+ada
+ 
+implementasi
+ real-time mobile.
+No. 12  —  Prediction of 
+Anemia
+ in Real-Time Using Smartphone Camera Processing Conjunctival Images
+Citation (Author, Year)
+Suner
+, S.S., et al. (2024)
+Judul
+ & 
+Jurnal
+Prediction of 
+Anemia
+ in Real-Time Using Smartphone Camera Processing Conjunctival Images
+📰
+ PubMed – International Journal (2024)
+🔗
+ 
+https://pubmed.ncbi.nlm.nih.gov/38739605/
+ 
+Research Problem
+Skrining
+ 
+anemia
+ real-time 
+menggunakan
+ 
+kamera
+ smartphone dan 
+pemrosesan
+ 
+citra
+ 
+konjungtiva
+ 
+belum
+ 
+divalidasi
+ 
+secara
+ 
+luas
+.
+Objective
+Memprediksi
+ 
+anemia
+ 
+secara
+ real-time 
+menggunakan
+ 
+kamera
+ smartphone 
+melalui
+ 
+pemrosesan
+ 
+citra
+ 
+konjungtiva
+.
+Method
+Pemrosesan
+ 
+citra
+ 
+konjungtiva
+ real-time; model ML/deep learning; 
+aplikasi
+ smartphone.
+Dataset
+Citra 
+konjungtiva
+ real-time 
+dari
+ 
+kamera
+ smartphone 
+pasien
+.
+Sample Size
+Dataset 
+validasi
+ 
+klinis
+ (detail di paper).
+Experimental Setup
+Pengambilan
+ 
+citra
+ real-time via 
+kamera
+; 
+pemrosesan
+ on-device; 
+prediksi
+ 
+anemia
+ 
+langsung
+.
+Evaluation Metric
+Sensitivitas
+, 
+Spesifisitas
+, PPV, NPV, AUC.
+Main Result
+Sistem
+ real-time 
+berbasis
+ smartphone 
+mampu
+ 
+memprediksi
+ 
+anemia
+ 
+dengan
+ 
+performa
+ 
+klinis
+ yang acceptable.
+Contribution
+Sistem
+ 
+prediksi
+ 
+anemia
+ real-time 
+dari
+ 
+kamera
+ smartphone 
+menggunakan
+ 
+citra
+ 
+konjungtiva
+.
+Limitation
+Kualitas
+ 
+prediksi
+ 
+bergantung
+ pada 
+kondisi
+ 
+pencahayaan
+ dan 
+kualitas
+ 
+kamera
+.
+Future Work
+Optimasi
+ 
+algoritma
+ 
+untuk
+ 
+kondisi
+ 
+cahaya
+ 
+rendah
+; 
+validasi
+ global.
+Relevance to My Study
+Sangat 
+relevan
+ – 
+deteksi
+ 
+anemia
+ real-time 
+dari
+ 
+konjungtiva
+ 
+berbasis
+ smartphone.
+Potential Gap
+Bergantung
+ 
+kualitas
+ hardware; 
+belum
+ 
+ada
+ 
+standar
+ 
+pencahayaan
+ yang universal.
+No. 13  —  
+Noninvasive
+ 
+Anemia
+ Detection and 
+Prediagnosis
+Citation (Author, Year)
+Aiwale
+, S., et al. (2024)
+Judul
+ & 
+Jurnal
+Noninvasive
+ 
+Anemia
+ Detection and 
+Prediagnosis
+📰
+ Journal of Pharmacology and Pharmacotherapeutics (2024)
+🔗
+ 
+https://journals.sagepub.com/doi/10.1177/0976500X241276307
+ 
+Research Problem
+Prediagnosis
+ 
+anemia
+ 
+secara
+ non-
+invasif
+ 
+sebelum
+ 
+konfirmasi
+ lab 
+masih
+ 
+menggunakan
+ 
+metode
+ 
+klinis
+ 
+subjektif
+; 
+belum
+ 
+ada
+ 
+sistem
+ 
+otomatis
+ 
+terintegrasi
+.
+Objective
+Mengembangkan
+ 
+sistem
+ 
+deteksi
+ dan 
+prediagnosis
+ 
+anemia
+ non-
+invasif
+ 
+menggunakan
+ 
+pendekatan
+ 
+terintegrasi
+.
+Method
+Analisis
+ 
+citra
+ 
+biologis
+ (
+konjungtiva
+, kuku, 
+telapak
+ 
+tangan
+) + machine learning 
+untuk
+ 
+prediagnosis
+.
+Dataset
+Citra multi-modal 
+dari
+ 
+pasien
+ 
+anemia
+ dan 
+kontrol
+.
+Sample Size
+Dataset 
+klinis
+ (detail di paper).
+Experimental Setup
+Pengambilan
+ multi-modal; 
+ekstraksi
+ 
+fitur
+ 
+warna
+; 
+klasifikasi
+ 
+prediagnosis
+ 
+anemia
+.
+Evaluation Metric
+Akurasi
+, 
+Sensitivitas
+, 
+Spesifisitas
+, F1-Score.
+Main Result
+Sistem
+ 
+prediagnosis
+ non-
+invasif
+ 
+mencapai
+ 
+performa
+ 
+deteksi
+ yang 
+baik
+; 
+pendekatan
+ multi-modal 
+meningkatkan
+ 
+akurasi
+.
+Contribution
+Framework 
+prediagnosis
+ 
+anemia
+ non-
+invasif
+ multi-modal yang 
+dapat
+ 
+digunakan
+ 
+sebelum
+ 
+konfirmasi
+ lab.
+Limitation
+Multi-modal 
+memerlukan
+ 
+pengambilan
+ 
+citra
+ 
+dari
+ 
+beberapa
+ 
+lokasi
+; 
+lebih
+ 
+kompleks
+ 
+dari
+ single-modal.
+Future Work
+Simplifikasi
+ 
+menjadi
+ 
+sistem
+ single-modal yang 
+lebih
+ 
+praktis
+; deployment di setting primer.
+Relevance to My Study
+Relevan
+ – 
+prediagnosis
+ non-
+invasif
+ 
+anemia
+ 
+dengan
+ multiple 
+modalitas
+ 
+termasuk
+ 
+konjungtiva
+.
+Potential Gap
+Multi-modal 
+lebih
+ 
+kompleks
+; 
+penelitian
+ 
+ini
+ 
+akan
+ 
+fokus
+ pada 
+konjungtiva
+ 
+sebagai
+ single modality.
+No. 14  —  History of 
+Anemia
+ in Pregnancy with Stunting Incidents in Toddlers
+Citation (Author, Year)
+Cholidah
+, R., et al. (2023)
+Judul
+ & 
+Jurnal
+History of 
+Anemia
+ in Pregnancy with Stunting Incidents in Toddlers
+📰
+ 
+Jurnal
+ 
+Penelitian
+ Pendidikan IPA (JPPIPA), Vol.9 No.12, pp.12226-12231
+🔗
+ 
+https://jppipa.unram.ac.id/index.php/jppipa/article/view/4946
+ 
+Research Problem
+Keterkaitan
+ 
+anemia
+ pada 
+ibu
+ 
+hamil
+ 
+dengan
+ 
+kejadian
+ stunting pada 
+balita
+ 
+masih
+ 
+perlu
+ 
+diperkuat
+ 
+dengan
+ data 
+berbasis
+ 
+komunitas
+ Indonesia.
+Objective
+Menganalisis
+ 
+hubungan
+ 
+riwayat
+ 
+anemia
+ 
+dalam
+ 
+kehamilan
+ 
+dengan
+ 
+kejadian
+ stunting pada 
+balita
+.
+Method
+Studi 
+korelasi
+; data 
+rekam
+ 
+medis
+; 
+analisis
+ 
+statistik
+.
+Dataset
+Data 
+ibu
+ 
+hamil
+ dan 
+balita
+ di 
+Puskesmas
+ Nipah, Lombok Utara.
+Sample Size
+Tidak 
+disebutkan
+ 
+secara
+ 
+eksplisit
+ di 
+abstrak
+.
+Experimental Setup
+Analisis
+ 
+retrospektif
+ data 
+rekam
+ 
+medis
+; uji chi-square.
+Evaluation Metric
+Nilai p, Odds Ratio (OR), CI 95%.
+Main Result
+Riwayat 
+anemia
+ 
+dalam
+ 
+kehamilan
+ 
+secara
+ 
+signifikan
+ 
+meningkatkan
+ 
+risiko
+ stunting pada 
+balita
+.
+Contribution
+Bukti 
+empiris
+ 
+lokal
+ 
+bahwa
+ 
+pencegahan
+ 
+anemia
+ 
+ibu
+ 
+hamil
+ 
+penting
+ 
+untuk
+ 
+mencegah
+ stunting.
+Limitation
+Desain 
+retrospektif
+; 
+faktor
+ confounding (
+gizi
+, 
+sosioekonomik
+) 
+tidak
+ 
+sepenuhnya
+ 
+dikontrol
+.
+Future Work
+Studi 
+prospektif
+ 
+dengan
+ 
+kontrol
+ confounding; 
+integrasi
+ program 
+skrining
+ 
+anemia
+.
+Relevance to My Study
+Relevan
+ 
+sebagai
+ 
+justifikasi
+ 
+pentingnya
+ 
+skrining
+ 
+anemia
+ 
+dini
+ 
+sebagai
+ 
+upaya
+ 
+pencegahan
+ stunting.
+Potential Gap
+Fokus
+ pada 
+ibu
+ 
+hamil
+ dan stunting; 
+tidak
+ 
+menyentuh
+ 
+teknologi
+ 
+deteksi
+ 
+otomatis
+.
+No. 15  —  
+Hubungan
+ Kadar 
+Hemoglobin
+ Ibu Hamil 
+dengan
+ 
+Kejadian
+ Stunting pada Balita di 
+Puskesmas
+ 
+Ngemplak
+Citation (Author, Year)
+Setiyaningsih
+, A., et al. (2023)
+Judul
+ & 
+Jurnal
+Hubungan
+ Kadar 
+Hemoglobin
+ Ibu Hamil 
+dengan
+ 
+Kejadian
+ Stunting pada Balita di 
+Puskesmas
+ 
+Ngemplak
+📰
+ 
+Jurnal
+ 
+Komunikasi
+ Kesehatan (JKK), Vol.14 No.1, pp.26-36
+🔗
+ 
+https://journal.poltekkespalu.ac.id/index.php/JKK/article/view/317
+ 
+Research Problem
+Kadar 
+hemoglobin
+ 
+ibu
+ 
+hamil
+ yang 
+rendah
+ (
+anemia
+) 
+diduga
+ 
+berhubungan
+ 
+dengan
+ stunting; data 
+lokal
+ di 
+Puskesmas
+ 
+Ngemplak
+ 
+belum
+ 
+tersedia
+.
+Objective
+Menganalisis
+ 
+hubungan
+ 
+kadar
+ 
+hemoglobin
+ 
+ibu
+ 
+hamil
+ 
+dengan
+ 
+kejadian
+ stunting pada 
+balita
+.
+Method
+Studi cross-sectional; 
+pengukuran
+ Hb 
+ibu
+ 
+hamil
+; 
+pengukuran
+ TB/BB 
+balita
+; 
+analisis
+ 
+korelasi
+.
+Dataset
+Ibu 
+hamil
+ dan 
+balita
+ di 
+Puskesmas
+ 
+Ngemplak
+.
+Sample Size
+Sampel cross-sectional (detail di paper).
+Experimental Setup
+Pengumpulan
+ data primer; 
+pengukuran
+ Hb 
+dengan
+ hemoglobinometer; 
+analisis
+ SPSS.
+Evaluation Metric
+Nilai 
+korelasi
+ Pearson/Spearman, 
+nilai
+ p.
+Main Result
+Terdapat
+ 
+hubungan
+ 
+signifikan
+ 
+antara
+ 
+kadar
+ Hb 
+ibu
+ 
+hamil
+ dan 
+kejadian
+ stunting pada 
+balita
+.
+Contribution
+Data 
+lokal
+ Indonesia 
+tentang
+ 
+hubungan
+ 
+anemia
+ 
+ibu
+ 
+hamil
+ 
+dengan
+ stunting di level 
+puskesmas
+.
+Limitation
+Desain cross-sectional; 
+hanya
+ pada 
+satu
+ 
+puskesmas
+.
+Future Work
+Multi-
+center
+; 
+integrasi
+ program 
+skrining
+ Hb non-
+invasif
+.
+Relevance to My Study
+Relevan
+ 
+sebagai
+ 
+latar
+ 
+belakang
+ 
+urgensi
+ 
+deteksi
+ 
+anemia
+ 
+dini
+ dan 
+dampaknya
+ pada 
+kesehatan
+ 
+generasi
+.
+Potential Gap
+Tidak 
+menggunakan
+ 
+teknologi
+ 
+otomatis
+; 
+hanya
+ 
+pengukuran
+ Hb 
+konvensional
+.
+DAFTAR REFERENSI
+[1] 
+Ilmadina
+, H.Z., Nisa, J., 
+Apriliani
+, D., Anisa, L.N., & 
+Rakhmah
+, F.A. (2025). "
+CesLA
+: 
+Deteksi
+ 
+Anemia
+ Non-
+Invasif
+ pada 
+Remaja
+ Putri 
+Berbasis
+ Citra 
+Konjungtiva
+". 
+Jurnal
+ 
+Informatika
+: 
+Jurnal
+ 
+Pengembangan
+ IT (JPIT), Vol.10 No.3. 
+URL: http://ejournal.poltekharber.ac.id/index.php/informatika/article/view/8873
+[2] 
+Natasha, L.N. & 
+Suparti
+, S. (2024). "
+Hubungan
+ Jenis Kelamin, Status Gizi dan 
+Keadaan
+ 
+Konjungtiva
+ 
+dengan
+ 
+Kejadian
+ 
+Anemia
+ pada 
+Remaja
+ Sekolah". 
+Jurnal
+ 
+Ilmiah
+ Kesehatan Keperawatan (JIKK), Vol.20 No.1, pp.1-9. 
+URL: https://ejournal.unimugo.ac.id/index.php/JIKK/article/view/1340
+[3] 
+Syafruddin
+, A., et al. (2023). "
+Deteksi
+ 
+Anemia
+ 
+melalui
+ 
+Klasifikasi
+ Citra 
+Konjungtiva
+ 
+Menggunakan
+ Transfer Learning 
+AlexNet
+ CNN". Media 
+Elektrik
+ (
+Jurnal
+ Teknik Elektro UNM), Vol.20 No.2. 
+URL: https://journal.unm.ac.id/index.php/mediaelektrik/article/view/5538
+[4] 
+Dimauro, G., et al. (2023). "An Intelligent Non-Invasive System for Automated Diagnosis of 
+Anemia
+ Exploiting a Novel Dataset". Artificial Intelligence in Medicine, Vol.136, p.102477. 
+URL: https://www.sciencedirect.com/science/article/pii/S0933365722002457
+[5] 
+Asare, J.W., 
+Appiahene
+, P., & 
+Donkoh
+, E.T. (2023). "Detection of Anaemia Using Medical Images: A Comparative Study of Machine Learning Algorithms – A Systematic Literature Review". Informatics in Medicine Unlocked, Vol.40, p.101283. 
+URL: https://www.sciencedirect.com/science/article/pii/S2352914823000850
+[6] 
+Mansour, M., 
+Donmez
+, T.B., Kutlu, M., & Mahmud, S. (2023). "Non-Invasive Detection of 
+Anemia
+ Using Lip Mucosa Images Transfer Learning Convolutional Neural Networks". Frontiers in Big Data, Vol.6, p.1291329. 
+URL: https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2023.1291329/full
+[7] 
+Das, S., Ahamed, F., Das, A., Das, D., Nandi, J., & Banerjee, K. (2024). "NiADA: Smartphone-Based Application with AI to Measure Blood 
+Hemoglobin
+ in Real-Time". Cureus, Vol.16 No.7. 
+URL: https://www.cureus.com/articles/270040-niada-non-invasive-anemia-detection-app-a-smartphone-based-application-with-artificial-intelligence-to-measure-blood-hemoglobin-in-real-time-a-clinical-validation
+[8] 
+Hajrianti
+, S., 
+Widyawati
+, M.N., & 
+Kurnianingsih
+, K. (2023). "
+Deteksi
+ 
+Anemia
+ pada Ibu Hamil 
+Menggunakan
+ Metode Non-
+Invasif
+ 
+Berbasis
+ 
+Kecerdasan
+ 
+Artifisial
+". 
+Jurnal
+ Telenursing (JOTING), Vol.5 No.2, pp.3568-3577. 
+URL: https://journal.ipm2kpe.or.id/index.php/JOTING/article/view/7468
+[9] 
+Priyadarshini, M.A., et al. (2024). "A Visionary Approach to 
+Anemia
+ Detection: Integrating Eye Condition Data and Machine Learning". Proceedings ICCIET 2024, Atlantis Press International BV, pp.781-793. 
+URL: https://www.atlantis-press.com/proceedings/icciet-24/126003571
+[10] 
+Syarifuddin
+, S.D.S., 
+Khurniawan
+, A., Munadi, R., & Sussi, S. (2023). "
+Sistem
+ 
+Informasi
+ 
+Pengukuran
+ Kadar 
+Hemoglobin
+ Non-
+Invasif
+ 
+Berbasis
+ Android 
+Menggunakan
+ 
+Algoritma
+ Extreme Gradient Boosting". 
+Komputika
+: 
+Jurnal
+ 
+Sistem
+ 
+Komputer
+, Vol.12 No.1, pp.13-23. 
+URL: https://ojs.unikom.ac.id/index.php/komputika/article/view/5049
+[11] 
+Poon, L.C.Y., et al. (2024). "Deep Learning Model-Based Detection of 
+Anemia
+ from Conjunctiva Images". PubMed – Indexed International Journal (2024). 
+URL: https://pubmed.ncbi.nlm.nih.gov/39973037/
+[12] 
+Suner
+, S.S., et al. (2024). "Prediction of 
+Anemia
+ in Real-Time Using Smartphone Camera Processing Conjunctival Images". PubMed – International Journal (2024). 
+URL: https://pubmed.ncbi.nlm.nih.gov/38739605/
+[13] 
+Aiwale
+, S., et al. (2024). "
+Noninvasive
+ 
+Anemia
+ Detection and 
+Prediagnosis
+". Journal of Pharmacology and Pharmacotherapeutics (2024). 
+URL: https://journals.sagepub.com/doi/10.1177/0976500X241276307
+[14] 
+Cholidah
+, R., et al. (2023). "History of 
+Anemia
+ in Pregnancy with Stunting Incidents in Toddlers". 
+Jurnal
+ 
+Penelitian
+ Pendidikan IPA (JPPIPA), Vol.9 No.12, pp.12226-12231. 
+URL: https://jppipa.unram.ac.id/index.php/jppipa/article/view/4946
+[15] 
+Setiyaningsih
+, A., et al. (2023). "
+Hubungan
+ Kadar 
+Hemoglobin
+ Ibu Hamil 
+dengan
+ 
+Kejadian
+ Stunting pada Balita di 
+Puskesmas
+ 
+Ngemplak
+". 
+Jurnal
+ 
+Komunikasi
+ Kesehatan (JKK), Vol.14 No.1, pp.26-36. 
+URL: https://journal.poltekkespalu.ac.id/index.php/JKK/article/view/317
