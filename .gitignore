@@ -16,6 +16,9 @@ models/*.onnx
 data/raw/images/
 data/raw/masks/
 data/raw/metadata.csv
+data/raw/synthetic/
+data/raw/eyes_defy_anemia/
+*.pt
 data/processed/
 data/splits/
 runs/

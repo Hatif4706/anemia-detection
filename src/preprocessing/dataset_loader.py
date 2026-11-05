@@ -1,142 +1,79 @@
+"""Penyusunan metadata, pembagian data per subjek, dan data sintetis untuk uji fungsi kode."""
 import os
+from pathlib import Path
+from typing import Tuple
+
 import cv2
 import numpy as np
 import pandas as pd
-from typing import List, Tuple, Dict, Any, Optional
 from sklearn.model_selection import train_test_split
 
-class DatasetLoader:
+from src.preprocessing.labels import anemia_label
+from src.utils import write_image
+
+
+def create_subject_splits(df: pd.DataFrame, splits_dir: str, train_ratio=0.70, val_ratio=0.15, test_ratio=0.15,
+                          seed: int = 42) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Stratified split di tingkat subjek: semua citra satu subjek berada di bagian yang sama."""
+    assert abs(train_ratio + val_ratio + test_ratio - 1.0) < 1e-6
+    subj = df.groupby("subject_id")["anemia_label"].max().reset_index()
+    tr_s, tmp_s = train_test_split(subj, test_size=val_ratio + test_ratio, stratify=subj["anemia_label"],
+                                   random_state=seed)
+    va_s, te_s = train_test_split(tmp_s, test_size=test_ratio / (val_ratio + test_ratio),
+                                  stratify=tmp_s["anemia_label"], random_state=seed)
+    out = []
+    os.makedirs(splits_dir, exist_ok=True)
+    for name, s in [("train", tr_s), ("val", va_s), ("test", te_s)]:
+        part = df[df["subject_id"].isin(s["subject_id"])].copy()
+        part.to_csv(Path(splits_dir) / f"{name}.csv", index=False)
+        out.append(part)
+    return tuple(out)
+
+
+def load_split(splits_dir: str, name: str) -> pd.DataFrame:
+    return pd.read_csv(Path(splits_dir) / f"{name}.csv")
+
+
+def generate_synthetic_dataset(out_dir: str, label_cfg: dict, num_samples: int = 80, seed: int = 42) -> pd.DataFrame:
+    """Citra close-up kelopak mata bawah buatan, meniru tata letak Eyes-defy-anemia.
+
+    HANYA untuk menguji bahwa kode berjalan dari awal sampai akhir. Hasil pada data ini
+    tidak boleh dilaporkan sebagai hasil penelitian.
     """
-    Manajer pemuatan, validasi, dan pembagian dataset konjungtiva palpebra.
-    Menjamin partisi data (train, val, test) yang identik untuk seluruh model
-    demi perbandingan yang setara (fair benchmark).
-    """
-
-    def __init__(
-        self,
-        raw_dir: str = "data/raw",
-        processed_dir: str = "data/processed",
-        splits_dir: str = "data/splits",
-        random_seed: int = 42
-    ):
-        self.raw_dir = raw_dir
-        self.processed_dir = processed_dir
-        self.splits_dir = splits_dir
-        self.random_seed = random_seed
-
-    def create_stratified_splits(
-        self,
-        metadata_df: pd.DataFrame,
-        train_ratio: float = 0.70,
-        val_ratio: float = 0.15,
-        test_ratio: float = 0.15,
-        target_col: str = "anemia_label"
-    ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
-        """
-        Membagi metadata ke train, val, test secara stratified berdasarkan label anemia.
-        Menyimpan file csv di data/splits/ untuk memastikan reproducibilitas absolut.
-        """
-        assert abs((train_ratio + val_ratio + test_ratio) - 1.0) < 1e-5, "Rasio harus berjumlah 1.0"
-        os.makedirs(self.splits_dir, exist_ok=True)
-
-        # Split 1: Train vs Temp (Val + Test)
-        temp_ratio = val_ratio + test_ratio
-        train_df, temp_df = train_test_split(
-            metadata_df,
-            test_size=temp_ratio,
-            stratify=metadata_df[target_col],
-            random_state=self.random_seed
-        )
-
-        # Split 2: Val vs Test
-        val_relative_ratio = val_ratio / temp_ratio
-        val_df, test_df = train_test_split(
-            temp_df,
-            test_size=(1.0 - val_relative_ratio),
-            stratify=temp_df[target_col],
-            random_state=self.random_seed
-        )
-
-        train_path = os.path.join(self.splits_dir, "train.csv")
-        val_path = os.path.join(self.splits_dir, "val.csv")
-        test_path = os.path.join(self.splits_dir, "test.csv")
-
-        train_df.to_csv(train_path, index=False)
-        val_df.to_csv(val_path, index=False)
-        test_df.to_csv(test_path, index=False)
-
-        print(f"[DatasetLoader] Split tersimpan:")
-        print(f" - Train: {len(train_df)} sampel ({train_path})")
-        print(f" - Val:   {len(val_df)} sampel ({val_path})")
-        print(f" - Test:  {len(test_df)} sampel ({test_path})")
-
-        return train_df, val_df, test_df
-
-    def generate_synthetic_benchmark_dataset(self, num_samples: int = 40):
-        """
-        Menghasilkan sampel citra dan mask sintetis untuk keperluan
-        pengujian verifikasi pipeline secara instan sebelum dataset publik diunduh.
-        """
-        images_dir = os.path.join(self.raw_dir, "images")
-        masks_dir = os.path.join(self.raw_dir, "masks")
-        os.makedirs(images_dir, exist_ok=True)
-        os.makedirs(masks_dir, exist_ok=True)
-
-        records = []
-        np.random.seed(self.random_seed)
-
-        for i in range(num_samples):
-            img_id = f"sample_{i:03d}"
-            # Tentukan status anemia: 1 = Anemia (pucat), 0 = Normal (merah segar)
-            is_anemic = 1 if (i % 2 == 0) else 0
-
-            # Buat citra dasar wajah/mata sintetis (480 x 640)
-            img = np.full((480, 640, 3), fill_value=180, dtype=np.uint8)
-            # Area wajah / kulit
-            cv2.ellipse(img, (320, 240), (200, 230), 0, 0, 360, (190, 205, 225), -1)
-
-            # Gambar dua mata (sclera)
-            cv2.ellipse(img, (240, 220), (50, 25), 0, 0, 360, (245, 245, 245), -1)
-            cv2.ellipse(img, (400, 220), (50, 25), 0, 0, 360, (245, 245, 245), -1)
-
-            # Iris
-            cv2.circle(img, (240, 220), 16, (50, 40, 30), -1)
-            cv2.circle(img, (400, 220), 16, (50, 40, 30), -1)
-
-            # Mask ground truth konjungtiva palpebra (kelopak mata bawah yang tertarik)
-            mask = np.zeros((480, 640), dtype=np.uint8)
-            left_conj = np.array([[200, 235], [240, 260], [280, 235], [240, 245]], dtype=np.int32)
-            right_conj = np.array([[360, 235], [400, 260], [440, 235], [400, 245]], dtype=np.int32)
-            cv2.fillPoly(mask, [left_conj, right_conj], 255)
-
-            # Warnai area konjungtiva sesuai label anemia
-            if is_anemic:
-                # Pucat (pallor): Rona kemerahan rendah, lebih kekuningan/putih
-                conj_color = (175, 175, 215) # BGR
-            else:
-                # Normal: Rona merah pekat (vaskularisasi baik)
-                conj_color = (80, 90, 210)  # BGR
-
-            # Terapkan warna konjungtiva pada citra
-            img[mask == 255] = conj_color
-
-            img_path = os.path.join(images_dir, f"{img_id}.jpg")
-            mask_path = os.path.join(masks_dir, f"{img_id}.png")
-
-            cv2.imwrite(img_path, img)
-            cv2.imwrite(mask_path, mask)
-
-            records.append({
-                "sample_id": img_id,
-                "image_path": img_path,
-                "mask_path": mask_path,
-                "anemia_label": is_anemic,
-                "hemoglobin_est": 8.5 + np.random.uniform(0, 2.0) if is_anemic else 13.5 + np.random.uniform(0, 2.5)
-            })
-
-        df = pd.DataFrame(records)
-        meta_path = os.path.join(self.raw_dir, "metadata.csv")
-        df.to_csv(meta_path, index=False)
-        print(f"[DatasetLoader] Generated {num_samples} sample data di {self.raw_dir}")
-
-        return df
+    rng = np.random.default_rng(seed)
+    img_dir, mask_dir = Path(out_dir) / "images", Path(out_dir) / "masks"
+    rows = []
+    for i in range(num_samples):
+        sex = "female" if rng.random() < 0.5 else "male"
+        hb = float(np.clip(rng.normal(12.2, 2.0), 6.0, 17.5))
+        H, W = 600, 800
+        skin = np.array([150, 170, 205]) + rng.normal(0, 12, 3)  # BGR
+        img = np.ones((H, W, 3), np.float32) * skin
+        cx, cy = int(W / 2 + rng.normal(0, 40)), int(H * 0.42 + rng.normal(0, 25))
+        ax, ay = int(rng.uniform(230, 300)), int(rng.uniform(80, 110))
+        cv2.ellipse(img, (cx, cy), (ax, ay), 0, 0, 360, (235, 238, 240), -1)  # sklera
+        cv2.circle(img, (cx + int(rng.normal(0, 20)), cy), int(ay * 0.85), (40, 55, 75), -1)  # iris
+        # konjungtiva palpebral: bulan sabit di bawah mata (kelopak ditarik ke bawah)
+        mask = np.zeros((H, W), np.uint8)
+        outer = cv2.ellipse2Poly((cx, cy + 10), (ax, ay + int(rng.uniform(70, 110))), 0, 10, 170, 5)
+        inner = cv2.ellipse2Poly((cx, cy), (int(ax * 0.97), ay), 0, 10, 170, 5)[::-1]
+        cv2.fillPoly(mask, [np.vstack([outer, inner]).astype(np.int32)], 255)
+        redness = np.clip((hb - 6.0) / 11.0 + rng.normal(0, 0.12), 0, 1)  # makin rendah Hb makin pucat
+        pale, red = np.array([175, 180, 225]), np.array([70, 75, 200])
+        conj = pale * (1 - redness) + red * redness
+        noise = rng.normal(0, 10, (H, W, 3))
+        img[mask > 0] = conj + noise[mask > 0]
+        for _ in range(6):  # pembuluh darah
+            x0 = int(cx + rng.uniform(-ax * 0.8, ax * 0.8))
+            cv2.line(img, (x0, cy + ay), (x0 + int(rng.normal(0, 30)), cy + ay + 50), tuple(conj * 0.8), 2)
+        grad = np.linspace(rng.uniform(0.8, 1.0), rng.uniform(1.0, 1.15), W)[None, :, None]  # pencahayaan
+        img = np.clip(img * grad + rng.normal(0, 4, img.shape), 0, 255).astype(np.uint8)
+        img = cv2.GaussianBlur(img, (3, 3), 0)
+        sid = f"synthetic_{i:03d}"
+        ip, mp = img_dir / f"{sid}.jpg", mask_dir / f"{sid}.png"
+        write_image(ip, img)
+        write_image(mp, mask)
+        rows.append({"sample_id": sid, "subject_id": sid, "country": "synthetic", "image_path": str(ip),
+                     "mask_path": str(mp), "hb": round(hb, 2), "sex": sex, "age": None,
+                     "anemia_label": anemia_label(hb, sex, None, label_cfg)})
+    return pd.DataFrame(rows)

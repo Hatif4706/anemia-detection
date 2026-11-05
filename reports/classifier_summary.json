@@ -1,0 +1,32 @@
+{
+  "gt": {
+    "n_train": 56,
+    "n_val": 12,
+    "n_test": 12,
+    "test_without_roi": 0,
+    "train_without_roi": 0,
+    "epochs_run": 30,
+    "best_val_loss": 0.3251,
+    "classifier_latency_ms": 14.78,
+    "weights": "models\\mobilenetv3_gt.pt"
+  },
+  "p1_yolo_unet": {
+    "n_train": 56,
+    "n_val": 12,
+    "n_test": 12,
+    "test_without_roi": 0,
+    "train_without_roi": 0,
+    "epochs_run": 30,
+    "best_val_loss": 0.2634,
+    "classifier_latency_ms": 9.86,
+    "weights": "models\\mobilenetv3_p1_yolo_unet.pt"
+  },
+  "p2_mediapipe": {
+    "n_train": 0,
+    "n_val": 0,
+    "n_test": 0,
+    "test_without_roi": 12,
+    "train_without_roi": 56,
+    "status": "dilewati: ROI terlalu sedikit untuk dilatih"
+  }
+}

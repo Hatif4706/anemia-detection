@@ -1,84 +1,76 @@
 experiment:
   name: "anemia_palpebral_conjunctiva_benchmark"
   seed: 42
-  device: "cuda" # 'cuda' or 'cpu'
+  device: "cuda" # 'cuda' atau 'cpu' (otomatis jatuh ke cpu bila CUDA tidak ada)
 
 dataset:
+  # 'eyes_defy_anemia' = data penelitian (Dimauro et al., 2023)
+  # 'synthetic'        = data buatan HANYA untuk uji fungsi kode, bukan hasil penelitian
+  source: "eyes_defy_anemia"
+  eyes_defy_anemia_dir: "data/raw/eyes_defy_anemia" # berisi folder Italy/ dan India/
+  mask_name: "palpebral.png" # mask konjungtiva palpebral buatan ahli
   raw_dir: "data/raw"
   processed_dir: "data/processed"
   splits_dir: "data/splits"
   train_ratio: 0.70
   val_ratio: 0.15
   test_ratio: 0.15
-  image_size: [640, 640]
-  roi_crop_size: [256, 256]
+
+labeling:
+  # Batas Hb (g/dL) menurut WHO / Kemenkes RI (2018). Anemia jika Hb < batas.
+  female: 12.0
+  male: 13.0
+  child_under_5: 11.0
+  unknown: 12.0 # dipakai bila jenis kelamin tidak tercatat
+
+preprocessing:
+  clahe_for_segmentation: true # CLAHE hanya untuk masukan YOLO/U-Net
+  clahe_for_classifier: false # warna asli dipertahankan agar sinyal kepucatan tidak berubah
 
 yolo_detector:
-  model_type: "yolov8n.pt" # or yolov11n.pt
-  epochs: 50
+  model_type: "yolov8n.pt" # bobot pretrained COCO, di-fine-tune 1 kelas
+  class_name: "konjungtiva_palpebral"
+  epochs: 80
   batch_size: 16
   imgsz: 640
-  confidence_threshold: 0.45
+  confidence_threshold: 0.25
   iou_threshold: 0.5
+  crop_padding: 0.10
+  weights_out: "models/yolo_conjunctiva.pt"
 
 unet_segmenter:
   encoder_name: "resnet34"
   encoder_weights: "imagenet"
   in_channels: 3
-  classes: 1 # binary mask (conjunctiva vs background)
+  classes: 1
+  input_size: 256
   epochs: 60
   batch_size: 8
   learning_rate: 0.0003
-  loss_fn: "dice_bce" # Combination of Dice Loss & BCE
+  loss_fn: "dice_bce"
   mask_threshold: 0.5
+  train_crop_padding: [0.05, 0.25] # jitter padding crop agar tahan terhadap kotak YOLO yang meleset
+  weights_out: "models/unet_resnet34.pt"
 
 mediapipe:
-  max_num_faces: 1
-  refine_landmarks: true
-  min_detection_confidence: 0.5
-  min_tracking_confidence: 0.5
-  # Eyelid landmarks for lower palpebral conjunctiva
-  # Left Eye Lower Palpebral indices: [33, 7, 163, 144, 145, 153, 154, 155, 133]
-  # Right Eye Lower Palpebral indices: [263, 249, 390, 373, 374, 380, 381, 382, 362]
-  expansion_factor: 1.15 # Expansion ratio to capture lower everted conjunctival sac
+  model_asset_path: "models/face_landmarker.task"
+  num_faces: 1
+  expansion_factor: 1.15
 
-features:
-  color_spaces:
-    - "rgb"
-    - "hsv"
-    - "lab"
-  colorimetric_indices:
-    - "erythema_index" # log(R) - log(G)
-    - "red_ratio"      # R / (R + G + B)
-    - "pallor_index"   # (R - G) / (R + G)
-    - "lab_a_mean"     # Mean of a* channel (redness degree)
-    - "lab_b_mean"     # Mean of b* channel (yellowness degree)
-  texture:
-    use_glcm: true
-    distances: [1, 3]
-    angles: [0, 0.785, 1.571, 2.356]
-
-classifiers:
-  models:
-    - "xgboost"
-    - "svm_rbf"
-    - "random_forest"
-  cv_folds: 5
-  scoring: "roc_auc"
+classifier:
+  architecture: "mobilenet_v3_small"
+  pretrained: true # bobot ImageNet
+  input_size: 224
+  epochs: 40
+  batch_size: 16
+  learning_rate: 0.0003
+  weight_decay: 0.0001
+  early_stopping_patience: 8
+  decision_threshold: 0.5
+  # 'per_pipeline': classifier dilatih ulang pada ROI dari masing-masing pipeline (setelan identik)
+  training_mode: "per_pipeline"
 
 evaluation:
-  save_dir: "reports"
-  metrics_segmentation:
-    - "iou"
-    - "dice_score"
-    - "precision"
-    - "recall"
-    - "latency_ms"
-    - "fps"
-  metrics_classification:
-    - "accuracy"
-    - "sensitivity_recall" # Critical for medical screening
-    - "specificity"
-    - "precision"
-    - "f1_score"
-    - "roc_auc"
+  reports_dir: "reports"
+  bootstrap_iterations: 1000
+  alpha: 0.05

@@ -23,11 +23,14 @@ class MediaPipeConjunctivaExtractor:
         self,
         model_asset_path: str = "models/face_landmarker.task",
         num_faces: int = 1,
-        expansion_factor: float = 1.15
+        expansion_factor: float = 1.15,
+        use_sulcus_points: bool = False
     ):
         self.model_asset_path = os.path.abspath(model_asset_path)
         self.num_faces = num_faces
         self.expansion_factor = expansion_factor
+        # False = sesuai Bab III: hanya 9 titik kelopak bawah yang diperluas lalu di-convex hull.
+        self.use_sulcus_points = use_sulcus_points
         self._detector = None
 
     def _get_detector(self):
@@ -102,7 +105,7 @@ class MediaPipeConjunctivaExtractor:
                 expanded_pts.append([x, new_y])
 
             sulcus_pts = []
-            for idx in sulcus_indices:
+            for idx in (sulcus_indices if self.use_sulcus_points else []):
                 if idx < len(landmarks):
                     pt = landmarks[idx]
                     sulcus_pts.append([int(pt.x * w), int(pt.y * h)])

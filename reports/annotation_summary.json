@@ -1,0 +1,14 @@
+{
+  "train": {
+    "images": 56,
+    "labeled": 56
+  },
+  "val": {
+    "images": 12,
+    "labeled": 12
+  },
+  "test": {
+    "images": 12,
+    "labeled": 12
+  }
+}

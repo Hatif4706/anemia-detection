@@ -1,0 +1,46 @@
+{
+  "p1_yolo_unet": {
+    "all": {
+      "n": 80,
+      "detection_rate": 1.0,
+      "mean_iou_all": 0.9635,
+      "mean_dice_all": 0.9814,
+      "mean_dice_detected": 0.9814,
+      "mean_latency_ms": 75.55,
+      "failures_by_stage": {}
+    },
+    "test": {
+      "n": 12,
+      "detection_rate": 1.0,
+      "mean_iou_all": 0.9631,
+      "mean_dice_all": 0.9811,
+      "mean_dice_detected": 0.9811,
+      "mean_latency_ms": 74.85,
+      "failures_by_stage": {}
+    }
+  },
+  "p2_mediapipe": {
+    "all": {
+      "n": 80,
+      "detection_rate": 0.0,
+      "mean_iou_all": 0.0,
+      "mean_dice_all": 0.0,
+      "mean_dice_detected": null,
+      "mean_latency_ms": 6.45,
+      "failures_by_stage": {
+        "face_landmarker": 80
+      }
+    },
+    "test": {
+      "n": 12,
+      "detection_rate": 0.0,
+      "mean_iou_all": 0.0,
+      "mean_dice_all": 0.0,
+      "mean_dice_detected": null,
+      "mean_latency_ms": 5.53,
+      "failures_by_stage": {
+        "face_landmarker": 12
+      }
+    }
+  }
+}

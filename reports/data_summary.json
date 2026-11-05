@@ -1,0 +1,12 @@
+{
+  "source": "synthetic",
+  "n_images": 80,
+  "n_anemia": 44,
+  "n_non_anemia": 36,
+  "split": {
+    "train": 56,
+    "val": 12,
+    "test": 12
+  },
+  "skipped": []
+}

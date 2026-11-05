@@ -1,0 +1,130 @@
+{
+  "data_source": "synthetic",
+  "git_commit": "3949a29",
+  "segmentation": {
+    "p1_yolo_unet": {
+      "all": {
+        "n": 80,
+        "detection_rate": 1.0,
+        "mean_iou_all": 0.9635,
+        "mean_dice_all": 0.9814,
+        "mean_dice_detected": 0.9814,
+        "mean_latency_ms": 75.55,
+        "failures_by_stage": {}
+      },
+      "test": {
+        "n": 12,
+        "detection_rate": 1.0,
+        "mean_iou_all": 0.9631,
+        "mean_dice_all": 0.9811,
+        "mean_dice_detected": 0.9811,
+        "mean_latency_ms": 74.85,
+        "failures_by_stage": {}
+      }
+    },
+    "p2_mediapipe": {
+      "all": {
+        "n": 80,
+        "detection_rate": 0.0,
+        "mean_iou_all": 0.0,
+        "mean_dice_all": 0.0,
+        "mean_dice_detected": null,
+        "mean_latency_ms": 6.45,
+        "failures_by_stage": {
+          "face_landmarker": 80
+        }
+      },
+      "test": {
+        "n": 12,
+        "detection_rate": 0.0,
+        "mean_iou_all": 0.0,
+        "mean_dice_all": 0.0,
+        "mean_dice_detected": null,
+        "mean_latency_ms": 5.53,
+        "failures_by_stage": {
+          "face_landmarker": 12
+        }
+      }
+    }
+  },
+  "classification": {
+    "gt": {
+      "n_test": 12,
+      "coverage": 1.0,
+      "accuracy": 0.8333,
+      "sensitivity": 0.6667,
+      "specificity": 1.0,
+      "precision": 1.0,
+      "f1_score": 0.8,
+      "roc_auc": 0.9444,
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "ci95": {
+        "sensitivity": [
+          0.25,
+          1.0
+        ],
+        "specificity": [
+          1.0,
+          1.0
+        ],
+        "roc_auc": [
+          0.7714,
+          1.0
+        ]
+      }
+    },
+    "p1_yolo_unet": {
+      "n_test": 12,
+      "coverage": 1.0,
+      "accuracy": 0.75,
+      "sensitivity": 0.6667,
+      "specificity": 0.8333,
+      "precision": 0.8,
+      "f1_score": 0.7273,
+      "roc_auc": 0.8889,
+      "confusion_matrix": [
+        [
+          5,
+          1
+        ],
+        [
+          2,
+          4
+        ]
+      ],
+      "ci95": {
+        "sensitivity": [
+          0.25,
+          1.0
+        ],
+        "specificity": [
+          0.5,
+          1.0
+        ],
+        "roc_auc": [
+          0.6571,
+          1.0
+        ]
+      }
+    },
+    "p2_mediapipe": {
+      "n_test": 12,
+      "coverage": 0.0
+    }
+  },
+  "comparison": {
+    "p1_vs_p2_mcnemar": {
+      "n_paired": 0,
+      "note": "tidak ada citra uji yang diproses kedua pipeline"
+    }
+  }
+}

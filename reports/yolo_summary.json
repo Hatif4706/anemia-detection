@@ -1,0 +1,9 @@
+{
+  "epochs": 150,
+  "pretrained": false,
+  "weights": "models\\yolo_conjunctiva.pt",
+  "test_mAP50": 0.995,
+  "test_mAP50_95": 0.8111666666666666,
+  "test_precision": 0.9924485917124399,
+  "test_recall": 1.0
+}

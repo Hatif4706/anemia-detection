@@ -1,0 +1,8 @@
+{
+  "epochs": 25,
+  "pretrained_encoder": false,
+  "best_val_dice": 0.9864596927160415,
+  "n_train": 56,
+  "n_val": 12,
+  "weights": "models\\unet_resnet34.pt"
+}
