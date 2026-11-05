@@ -94,6 +94,11 @@ def main():
          f"ROI terbentuk pada {p1.get('detection_rate', 0):.0%} citra, Dice rata-rata {p1.get('mean_dice_all', 0):.3f}" if p1 else "-"],
         ["Evaluasi dua tingkat + uji McNemar tersedia", status(bool(res)), "reports/results.json" if res else "-"],
     ]
+    p2b = (seg or {}).get("p2b_mediapipe_magictouch", {}).get("all", {})
+    if p2b:
+        targets.insert(4, ["Pipeline 2b (MediaPipe MagicTouch, tanpa pelatihan) untuk citra close-up",
+                           status(p2b.get("detection_rate", 0) > 0, True),
+                           f"ROI terbentuk pada {p2b['detection_rate']:.0%} citra, Dice rata-rata {p2b['mean_dice_all']:.3f}"])
     banner = ""
     if synthetic or smoke:
         banner = ('<div class="warn"><b>Uji fungsi kode.</b> Laporan ini memakai '
@@ -128,7 +133,8 @@ def main():
                  img_tag("kurva_pelatihan_unet.png", "Gambar 2. Kurva pelatihan U-Net.")]
     sections += ["<h2>5. Hasil kedua pipeline</h2>",
                  img_tag("contoh_roi_kedua_pipeline.png",
-                         "Gambar 3. Data uji: mask ahli (hijau), Pipeline 1 (biru), Pipeline 2 (oranye).")]
+                         "Gambar 3. Data uji: mask ahli (hijau), Pipeline 1 (ungu), Pipeline 2 Face Mesh, "
+                         "Pipeline 2b MagicTouch (oranye).")]
     tbl = REP / "results_table.md"
     if tbl.exists():
         md = [l for l in tbl.read_text(encoding="utf-8").splitlines() if l.startswith("|")]
@@ -142,7 +148,10 @@ def main():
                      f"<p>MediaPipe hanya membentuk ROI pada {p2['detection_rate']:.0%} citra. Face Landmarker "
                      "membutuhkan wajah yang terlihat, sedangkan citra konjungtiva umumnya berupa foto close-up mata. "
                      "Perbandingan kedua pipeline baru adil bila citra uji memuat wajah, sehingga sumber data untuk "
-                     "Pipeline 2 perlu diputuskan bersama pembimbing.</p>"]
+                     "Pipeline 2 perlu diputuskan bersama pembimbing.</p>"
+                     + ("<p>Sebagai alternatif, Pipeline 2b memakai MediaPipe Interactive Segmenter (MagicTouch) "
+                        "dengan titik petunjuk dari landmark wajah atau dari puncak kemerahan pada citra close-up, "
+                        "lalu disaring berdasarkan kanal a* CIELAB. Cara ini tetap tanpa pelatihan.</p>" if p2b else "")]
     sections += ["<h2>6. Cara mengulang</h2>",
                  "<pre>.venv\\Scripts\\python scripts\\run_pipeline.py            # data Eyes-defy-anemia\n"
                  ".venv\\Scripts\\python scripts\\run_pipeline.py --source synthetic --smoke   # uji fungsi</pre>"]

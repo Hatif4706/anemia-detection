@@ -6,7 +6,7 @@
       "mean_iou_all": 0.9635,
       "mean_dice_all": 0.9814,
       "mean_dice_detected": 0.9814,
-      "mean_latency_ms": 75.55,
+      "mean_latency_ms": 77.88,
       "failures_by_stage": {}
     },
     "test": {
@@ -15,7 +15,7 @@
       "mean_iou_all": 0.9631,
       "mean_dice_all": 0.9811,
       "mean_dice_detected": 0.9811,
-      "mean_latency_ms": 74.85,
+      "mean_latency_ms": 90.0,
       "failures_by_stage": {}
     }
   },
@@ -26,7 +26,7 @@
       "mean_iou_all": 0.0,
       "mean_dice_all": 0.0,
       "mean_dice_detected": null,
-      "mean_latency_ms": 6.45,
+      "mean_latency_ms": 3.85,
       "failures_by_stage": {
         "face_landmarker": 80
       }
@@ -37,10 +37,30 @@
       "mean_iou_all": 0.0,
       "mean_dice_all": 0.0,
       "mean_dice_detected": null,
-      "mean_latency_ms": 5.53,
+      "mean_latency_ms": 3.52,
       "failures_by_stage": {
         "face_landmarker": 12
       }
+    }
+  },
+  "p2b_mediapipe_magictouch": {
+    "all": {
+      "n": 80,
+      "detection_rate": 1.0,
+      "mean_iou_all": 0.9819,
+      "mean_dice_all": 0.9894,
+      "mean_dice_detected": 0.9894,
+      "mean_latency_ms": 111.47,
+      "failures_by_stage": {}
+    },
+    "test": {
+      "n": 12,
+      "detection_rate": 1.0,
+      "mean_iou_all": 0.9899,
+      "mean_dice_all": 0.9949,
+      "mean_dice_detected": 0.9949,
+      "mean_latency_ms": 105.85,
+      "failures_by_stage": {}
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "data_source": "synthetic",
-  "git_commit": "3949a29",
+  "git_commit": "2505f7d",
   "segmentation": {
     "p1_yolo_unet": {
       "all": {
@@ -9,7 +9,7 @@
         "mean_iou_all": 0.9635,
         "mean_dice_all": 0.9814,
         "mean_dice_detected": 0.9814,
-        "mean_latency_ms": 75.55,
+        "mean_latency_ms": 77.88,
         "failures_by_stage": {}
       },
       "test": {
@@ -18,7 +18,7 @@
         "mean_iou_all": 0.9631,
         "mean_dice_all": 0.9811,
         "mean_dice_detected": 0.9811,
-        "mean_latency_ms": 74.85,
+        "mean_latency_ms": 90.0,
         "failures_by_stage": {}
       }
     },
@@ -29,7 +29,7 @@
         "mean_iou_all": 0.0,
         "mean_dice_all": 0.0,
         "mean_dice_detected": null,
-        "mean_latency_ms": 6.45,
+        "mean_latency_ms": 3.85,
         "failures_by_stage": {
           "face_landmarker": 80
         }
@@ -40,10 +40,30 @@
         "mean_iou_all": 0.0,
         "mean_dice_all": 0.0,
         "mean_dice_detected": null,
-        "mean_latency_ms": 5.53,
+        "mean_latency_ms": 3.52,
         "failures_by_stage": {
           "face_landmarker": 12
         }
+      }
+    },
+    "p2b_mediapipe_magictouch": {
+      "all": {
+        "n": 80,
+        "detection_rate": 1.0,
+        "mean_iou_all": 0.9819,
+        "mean_dice_all": 0.9894,
+        "mean_dice_detected": 0.9894,
+        "mean_latency_ms": 111.47,
+        "failures_by_stage": {}
+      },
+      "test": {
+        "n": 12,
+        "detection_rate": 1.0,
+        "mean_iou_all": 0.9899,
+        "mean_dice_all": 0.9949,
+        "mean_dice_detected": 0.9949,
+        "mean_latency_ms": 105.85,
+        "failures_by_stage": {}
       }
     }
   },
@@ -51,25 +71,25 @@
     "gt": {
       "n_test": 12,
       "coverage": 1.0,
-      "accuracy": 0.8333,
-      "sensitivity": 0.6667,
+      "accuracy": 1.0,
+      "sensitivity": 1.0,
       "specificity": 1.0,
       "precision": 1.0,
-      "f1_score": 0.8,
-      "roc_auc": 0.9444,
+      "f1_score": 1.0,
+      "roc_auc": 1.0,
       "confusion_matrix": [
         [
           6,
           0
         ],
         [
-          2,
-          4
+          0,
+          6
         ]
       ],
       "ci95": {
         "sensitivity": [
-          0.25,
+          1.0,
           1.0
         ],
         "specificity": [
@@ -77,7 +97,7 @@
           1.0
         ],
         "roc_auc": [
-          0.7714,
+          1.0,
           1.0
         ]
       }
@@ -85,25 +105,25 @@
     "p1_yolo_unet": {
       "n_test": 12,
       "coverage": 1.0,
-      "accuracy": 0.75,
-      "sensitivity": 0.6667,
+      "accuracy": 0.6667,
+      "sensitivity": 0.5,
       "specificity": 0.8333,
-      "precision": 0.8,
-      "f1_score": 0.7273,
-      "roc_auc": 0.8889,
+      "precision": 0.75,
+      "f1_score": 0.6,
+      "roc_auc": 0.8333,
       "confusion_matrix": [
         [
           5,
           1
         ],
         [
-          2,
-          4
+          3,
+          3
         ]
       ],
       "ci95": {
         "sensitivity": [
-          0.25,
+          0.0,
           1.0
         ],
         "specificity": [
@@ -111,7 +131,7 @@
           1.0
         ],
         "roc_auc": [
-          0.6571,
+          0.5312,
           1.0
         ]
       }
@@ -119,12 +139,52 @@
     "p2_mediapipe": {
       "n_test": 12,
       "coverage": 0.0
+    },
+    "p2b_mediapipe_magictouch": {
+      "n_test": 12,
+      "coverage": 1.0,
+      "accuracy": 0.9167,
+      "sensitivity": 0.8333,
+      "specificity": 1.0,
+      "precision": 1.0,
+      "f1_score": 0.9091,
+      "roc_auc": 1.0,
+      "confusion_matrix": [
+        [
+          6,
+          0
+        ],
+        [
+          1,
+          5
+        ]
+      ],
+      "ci95": {
+        "sensitivity": [
+          0.5,
+          1.0
+        ],
+        "specificity": [
+          1.0,
+          1.0
+        ],
+        "roc_auc": [
+          1.0,
+          1.0
+        ]
+      }
     }
   },
   "comparison": {
     "p1_vs_p2_mcnemar": {
       "n_paired": 0,
       "note": "tidak ada citra uji yang diproses kedua pipeline"
+    },
+    "p1_vs_p2b_mcnemar": {
+      "n_paired": 12,
+      "a_correct_b_wrong": 0,
+      "a_wrong_b_correct": 3,
+      "p_value": 0.25
     }
   }
 }

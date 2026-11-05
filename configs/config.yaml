@@ -56,6 +56,9 @@ mediapipe:
   model_asset_path: "models/face_landmarker.task"
   num_faces: 1
   expansion_factor: 1.15
+  # Pipeline 2b (eksperimen): Interactive Segmenter MagicTouch untuk citra close-up
+  use_magictouch_variant: true
+  magic_touch_path: "models/magic_touch.tflite"
 
 classifier:
   architecture: "mobilenet_v3_small"

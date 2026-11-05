@@ -38,20 +38,22 @@ def main():
             entry["ci95"] = bootstrap_ci(y, p, s, cfg["evaluation"]["bootstrap_iterations"], cfg["evaluation"]["alpha"])
         out["classification"][src] = entry
     piv = preds.pivot(index="sample_id", columns="source", values="pred")
-    if {"p1_yolo_unet", "p2_mediapipe"} <= set(piv.columns):
-        both = piv.dropna(subset=["p1_yolo_unet", "p2_mediapipe"]).join(test.set_index("sample_id"))
-        out["comparison"]["p1_vs_p2_mcnemar"] = (
-            {"n_paired": int(len(both)), **mcnemar_exact(both["anemia_label"], both["p1_yolo_unet"].astype(int),
-                                                         both["p2_mediapipe"].astype(int))}
-            if len(both) else {"n_paired": 0, "note": "tidak ada citra uji yang diproses kedua pipeline"})
+    for other, key in [("p2_mediapipe", "p1_vs_p2_mcnemar"), ("p2b_mediapipe_magictouch", "p1_vs_p2b_mcnemar")]:
+        if {"p1_yolo_unet", other} <= set(piv.columns):
+            both = piv.dropna(subset=["p1_yolo_unet", other]).join(test.set_index("sample_id"))
+            out["comparison"][key] = (
+                {"n_paired": int(len(both)), **mcnemar_exact(both["anemia_label"], both["p1_yolo_unet"].astype(int),
+                                                             both[other].astype(int))}
+                if len(both) else {"n_paired": 0, "note": "tidak ada citra uji yang diproses kedua pipeline"})
     (rep / "results.json").write_text(json.dumps(out, indent=2), encoding="utf-8")
 
     # Ringkasan tabel Markdown untuk laporan
     lines = [f"Sumber data: **{data['source']}**  |  commit `{out['git_commit']}`", "",
              "| Pipeline | Deteksi ROI (uji) | Dice (uji) | Latensi ROI (ms) | Cakupan klasifikasi | Akurasi | Sensitivity | Specificity | F1 | ROC-AUC |",
              "|---|---|---|---|---|---|---|---|---|---|"]
-    names = {"gt": "Mask ahli (batas atas)", "p1_yolo_unet": "Pipeline 1: YOLOv8n + U-Net", "p2_mediapipe": "Pipeline 2: MediaPipe murni"}
-    for src in ["gt", "p1_yolo_unet", "p2_mediapipe"]:
+    names = {"gt": "Mask ahli (batas atas)", "p1_yolo_unet": "Pipeline 1: YOLOv8n + U-Net",
+             "p2_mediapipe": "Pipeline 2: MediaPipe Face Mesh", "p2b_mediapipe_magictouch": "Pipeline 2b: MediaPipe MagicTouch"}
+    for src in [s for s in names if s in out["classification"] or s in out["segmentation"]]:
         c = out["classification"].get(src, {})
         s = out["segmentation"].get(src, {}).get("test", {})
         f = lambda k: "-" if c.get(k) is None else "{:.3f}".format(c[k])
@@ -61,10 +63,11 @@ def main():
         cov = "{:.0%}".format(c.get("coverage", 0))
         lines.append(f"| {names[src]} | {det} | {dice} | {lat} | {cov} | {f('accuracy')} | {f('sensitivity')} | "
                      f"{f('specificity')} | {f('f1_score')} | {f('roc_auc')} |")
-    mc = out["comparison"].get("p1_vs_p2_mcnemar")
-    if mc:
-        lines += ["", f"Uji McNemar P1 vs P2: n berpasangan = {mc['n_paired']}"
-                  + (f", p = {mc['p_value']:.4f}" if "p_value" in mc else f" ({mc.get('note')})")]
+    for key, label in [("p1_vs_p2_mcnemar", "P1 vs P2"), ("p1_vs_p2b_mcnemar", "P1 vs P2b")]:
+        mc = out["comparison"].get(key)
+        if mc:
+            lines += ["", f"Uji McNemar {label}: n berpasangan = {mc['n_paired']}"
+                      + (f", p = {mc['p_value']:.4f}" if "p_value" in mc else f" ({mc.get('note')})")]
     (rep / "results_table.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
 

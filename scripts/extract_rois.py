@@ -18,7 +18,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.evaluation.metrics import EvaluationMetrics
-from src.pipelines.roi_pipelines import Pipeline1YoloUNet, Pipeline2MediaPipe
+from src.pipelines.roi_pipelines import build_pipelines
 from src.preprocessing.dataset_loader import load_split
 from src.utils import ROOT, get_device, load_config, read_image, read_mask, roi_from_mask, write_image
 
@@ -44,7 +44,9 @@ def main():
     device = get_device(cfg["experiment"]["device"])
     sd = str(ROOT / cfg["dataset"]["splits_dir"])
     df = pd.concat([load_split(sd, s).assign(split=s) for s in ["train", "val", "test"]], ignore_index=True)
-    pipes = [Pipeline1YoloUNet(cfg, device), Pipeline2MediaPipe(cfg)]
+    pipes = build_pipelines(cfg, device)
+    styles = {"p1_yolo_unet": ((200, 60, 60), "P1 YOLO+U-Net"), "p2_mediapipe": ((20, 110, 230), "P2 Face Mesh"),
+              "p2b_mediapipe_magictouch": ((0, 160, 255), "P2b MagicTouch")}
     proc = ROOT / cfg["dataset"]["processed_dir"]
     size = cfg["classifier"]["input_size"]
     rows, gallery = [], []
@@ -65,13 +67,13 @@ def main():
                 write_image(proc / "rois" / p.name / f"{r['sample_id']}.png", proi)
             rows.append({"sample_id": r["sample_id"], "split": r["split"], "pipeline": p.name,
                          "detected": info["detected"], "stage_failed": info.get("stage_failed"),
+                         "seed_source": info.get("seed_source"),
                          "latency_ms": round(info["latency_ms"], 2), **{k: round(v, 4) for k, v in seg.items()}})
-            color = (200, 60, 60) if p.name.startswith("p1") else (20, 110, 230)
-            title = ("P1 YOLO+U-Net" if p.name.startswith("p1") else "P2 MediaPipe") + \
-                    (f"  Dice {seg['dice_score']:.2f}" if info["detected"] else "  GAGAL")
+            color, name = styles[p.name]
+            title = name + (f"  Dice {seg['dice_score']:.2f}" if info["detected"] else "  GAGAL")
             panels.append(label(overlay(img, mask, color), title))
         if r["split"] == "test" and len(gallery) < 4:
-            gallery.append(np.hstack([cv2.resize(p, (360, int(360 * p.shape[0] / p.shape[1]))) for p in panels]))
+            gallery.append(np.hstack([cv2.resize(p, (300, int(300 * p.shape[0] / p.shape[1]))) for p in panels]))
 
     per = pd.DataFrame(rows)
     rep = ROOT / "reports"

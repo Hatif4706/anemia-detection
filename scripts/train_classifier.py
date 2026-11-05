@@ -26,7 +26,7 @@ from src.utils import ROOT, get_device, load_config, read_image, set_seed
 
 MEAN = np.array([0.485, 0.456, 0.406], np.float32)
 STD = np.array([0.229, 0.224, 0.225], np.float32)
-SOURCES = ["gt", "p1_yolo_unet", "p2_mediapipe"]
+SOURCES = ["gt", "p1_yolo_unet", "p2_mediapipe", "p2b_mediapipe_magictouch"]
 
 
 def build_mobilenet(pretrained: bool):
@@ -123,6 +123,8 @@ def main():
     patience = epochs if args.smoke else c["early_stopping_patience"]
     preds, summary = [], {}
     for src in SOURCES:
+        if src == "p2b_mediapipe_magictouch" and not cfg["mediapipe"].get("use_magictouch_variant", False):
+            continue
         set_seed(cfg["experiment"]["seed"])  # setelan identik untuk setiap sumber ROI
         tr, tr_miss = items_for(splits["train"], rois / src)
         va, _ = items_for(splits["val"], rois / src)

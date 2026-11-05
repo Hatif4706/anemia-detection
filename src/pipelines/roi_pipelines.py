@@ -62,3 +62,28 @@ class Pipeline2MediaPipe:
         ok = bool(meta.get("detected")) and bool(mask.any())
         return mask, {"detected": ok, "latency_ms": (time.perf_counter() - t0) * 1000,
                       "stage_failed": None if ok else "face_landmarker"}
+
+
+class Pipeline2bMagicTouch:
+    """MediaPipe tanpa pelatihan untuk citra close-up: titik petunjuk + Interactive Segmenter (MagicTouch)."""
+    name = "p2b_mediapipe_magictouch"
+
+    def __init__(self, cfg: dict):
+        from src.segmentation.magictouch_extractor import MagicTouchConjunctivaExtractor
+        m = cfg["mediapipe"]
+        self.extractor = MagicTouchConjunctivaExtractor(str(ROOT / m["magic_touch_path"]),
+                                                        str(ROOT / m["model_asset_path"]))
+        self.extractor.extract_mask(np.zeros((256, 256, 3), np.uint8))  # pemanasan
+
+    def __call__(self, image_bgr: np.ndarray) -> Tuple[np.ndarray, Dict]:
+        mask, meta = self.extractor.extract_mask(image_bgr)
+        return mask, {"detected": meta["detected"], "latency_ms": meta["latency_ms"],
+                      "seed_source": meta["seed_source"],
+                      "stage_failed": None if meta["detected"] else "magictouch"}
+
+
+def build_pipelines(cfg: dict, device: str):
+    pipes = [Pipeline1YoloUNet(cfg, device), Pipeline2MediaPipe(cfg)]
+    if cfg["mediapipe"].get("use_magictouch_variant", False):
+        pipes.append(Pipeline2bMagicTouch(cfg))
+    return pipes

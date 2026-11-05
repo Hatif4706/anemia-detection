@@ -6,8 +6,8 @@
     "test_without_roi": 0,
     "train_without_roi": 0,
     "epochs_run": 30,
-    "best_val_loss": 0.3251,
-    "classifier_latency_ms": 14.78,
+    "best_val_loss": 0.3281,
+    "classifier_latency_ms": 14.65,
     "weights": "models\\mobilenetv3_gt.pt"
   },
   "p1_yolo_unet": {
@@ -17,8 +17,8 @@
     "test_without_roi": 0,
     "train_without_roi": 0,
     "epochs_run": 30,
-    "best_val_loss": 0.2634,
-    "classifier_latency_ms": 9.86,
+    "best_val_loss": 0.259,
+    "classifier_latency_ms": 9.34,
     "weights": "models\\mobilenetv3_p1_yolo_unet.pt"
   },
   "p2_mediapipe": {
@@ -28,5 +28,16 @@
     "test_without_roi": 12,
     "train_without_roi": 56,
     "status": "dilewati: ROI terlalu sedikit untuk dilatih"
+  },
+  "p2b_mediapipe_magictouch": {
+    "n_train": 56,
+    "n_val": 12,
+    "n_test": 12,
+    "test_without_roi": 0,
+    "train_without_roi": 0,
+    "epochs_run": 30,
+    "best_val_loss": 0.3426,
+    "classifier_latency_ms": 8.92,
+    "weights": "models\\mobilenetv3_p2b_mediapipe_magictouch.pt"
   }
 }
