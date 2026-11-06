@@ -55,18 +55,29 @@ def read_image(path: str) -> np.ndarray:
 
 
 def read_mask(path: str, shape=None) -> np.ndarray:
-    """Membaca mask; piksel tidak hitam dianggap konjungtiva. Mengembalikan uint8 {0,255}."""
+    """Membaca mask konjungtiva dan mengembalikan uint8 {0,255}.
+
+    Format yang didukung:
+      - PNG dengan latar transparan: piksel dengan alpha > 127 = konjungtiva.
+      - Citra tersegmentasi dengan latar seragam (hitam ATAU putih): latar ditentukan dari median
+        piksel tepi gambar; piksel yang warnanya jauh dari latar = konjungtiva.
+      - Mask biner/grayscale biasa (latar hitam).
+    """
     data = np.fromfile(str(path), dtype=np.uint8)
     m = cv2.imdecode(data, cv2.IMREAD_UNCHANGED)
     if m is None:
         raise FileNotFoundError(f"Gagal membaca mask: {path}")
-    if m.ndim == 3:
-        if m.shape[2] == 4:  # PNG dengan alpha: pakai alpha bila informatif
-            alpha = m[:, :, 3]
-            m = alpha if alpha.min() < 250 else m[:, :, :3].max(axis=2)
-        else:
-            m = m.max(axis=2)
-    m = (m > 10).astype(np.uint8) * 255
+    if m.ndim == 3 and m.shape[2] == 4 and (m[:, :, 3] < 128).mean() > 0.01:
+        m = (m[:, :, 3] > 127).astype(np.uint8) * 255
+    else:
+        rgb = m[:, :, :3].astype(np.int16) if m.ndim == 3 else m[:, :, None].astype(np.int16)
+        border = np.concatenate([rgb[0], rgb[-1], rgb[:, 0], rgb[:, -1]])
+        bg = np.median(border, axis=0)
+        m = (np.abs(rgb - bg).max(axis=2) > 30).astype(np.uint8) * 255
+        k = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (5, 5))
+        m = cv2.morphologyEx(m, cv2.MORPH_CLOSE, k)
+        cnts, _ = cv2.findContours(m, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)  # isi lubang (pantulan cahaya)
+        m = cv2.drawContours(np.zeros_like(m), cnts, -1, 255, cv2.FILLED)
     if shape is not None and m.shape[:2] != tuple(shape[:2]):
         m = cv2.resize(m, (shape[1], shape[0]), interpolation=cv2.INTER_NEAREST)
     return m

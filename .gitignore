@@ -19,6 +19,7 @@ data/raw/masks/
 data/raw/metadata.csv
 data/raw/synthetic/
 data/raw/eyes_defy_anemia/
+data/raw/*.zip
 *.pt
 data/processed/
 data/splits/

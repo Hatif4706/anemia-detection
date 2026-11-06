@@ -54,8 +54,29 @@ def _read_sheet(country_dir: Path) -> pd.DataFrame:
     return out.dropna(subset=["number"])
 
 
+def _is_mask(p: Path) -> bool:
+    n = p.name.lower()
+    return any(n == m or n.endswith("_" + m) for m in MASK_FILES)
+
+
+def _find_mask(folder: Path, mask_name: str) -> Optional[Path]:
+    """Mendukung 'palpebral.png' maupun '<nama>_palpebral.png' (versi unduhan yang beredar)."""
+    exact = folder / mask_name
+    if exact.exists():
+        return exact
+    # Ejaan keliru yang ada di berkas penyedia: India/7 'papebral', Italy/95 'palplebral'.
+    variants = {mask_name, mask_name.replace("palpebral", "papebral"), mask_name.replace("palpebral", "palplebral")}
+    for p in sorted(folder.iterdir()):
+        n = p.name.lower()
+        if "forniceal" in n and "forniceal" not in mask_name:
+            continue
+        if any(n == v or n.endswith("_" + v) for v in variants):
+            return p
+    return None
+
+
 def _original_image(folder: Path) -> Optional[Path]:
-    cands = [p for p in folder.iterdir() if p.suffix.lower() in IMG_EXT and p.name.lower() not in MASK_FILES]
+    cands = [p for p in folder.iterdir() if p.suffix.lower() in IMG_EXT and not _is_mask(p)]
     if not cands:
         return None
     jpgs = [p for p in cands if p.suffix.lower() in {".jpg", ".jpeg"}]
@@ -76,8 +97,8 @@ def build_metadata(root: str, label_cfg: dict, mask_name: str = "palpebral.png")
             except ValueError:
                 continue
             img = _original_image(folder)
-            mask = folder / mask_name
-            if img is None or not mask.exists():
+            mask = _find_mask(folder, mask_name)
+            if img is None or mask is None:
                 skipped.append(f"{country}/{folder.name}: citra/mask tidak lengkap")
                 continue
             if number not in sheet.index or pd.isna(sheet.loc[number, "hb"]):

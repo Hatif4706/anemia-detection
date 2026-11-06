@@ -43,9 +43,10 @@ def main():
             n_ok += 1
             if len(preview) < 6:
                 vis = img.copy()
-                cv2.rectangle(vis, (x1, y1), (x2, y2), (0, 255, 0), 3)
+                t = max(3, w // 150)  # tebal garis mengikuti resolusi agar tetap terlihat setelah diperkecil
+                cv2.rectangle(vis, (x1, y1), (x2, y2), (0, 255, 0), t)
                 cnts, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-                cv2.drawContours(vis, cnts, -1, (255, 0, 255), 2)
+                cv2.drawContours(vis, cnts, -1, (255, 0, 255), t)
                 preview.append(cv2.resize(vis, (400, int(400 * h / w))))
         stats[split] = {"images": int(len(df)), "labeled": n_ok}
     (out / "data.yaml").write_text(

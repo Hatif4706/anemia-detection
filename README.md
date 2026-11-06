@@ -62,6 +62,16 @@ python scripts/run_pipeline.py
 python scripts/run_pipeline.py --source synthetic --smoke
 ```
 
+### Menjalankan di Google Colab (GPU T4, hasil tersimpan di Google Drive)
+
+1. Unggah `archive.zip` dataset ke `MyDrive/anemia-detection-colab/archive.zip`.
+2. Buka [notebooks/train_colab.ipynb](https://colab.research.google.com/github/Hatif4706/anemia-detection/blob/dev/notebooks/train_colab.ipynb),
+   pilih **Runtime → Change runtime type → T4 GPU**, lalu **Runtime → Run all**.
+3. Hasil tersimpan per tahap di `MyDrive/anemia-detection-colab/hasil/<RUN_NAME>/` (models, reports, runs, log).
+   Bila sesi terputus, set `START_STEP` ke tahap yang belum selesai lalu Run all lagi.
+
+Lanjutkan dari tahap tertentu secara lokal: `python scripts/run_pipeline.py --start 3b` (opsional `--stop 4`).
+
 | Tahap | Skrip | Keluaran utama |
 |---|---|---|
 | 1. Metadata + split per subjek | `prepare_data.py` | `data/raw/metadata.csv`, `data/splits/*.csv` |

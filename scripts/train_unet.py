@@ -26,14 +26,31 @@ from src.utils import ROOT, apply_clahe, get_device, load_config, mask_bbox, pad
 
 
 class CropDataset(Dataset):
-    def __init__(self, df, size, pad_range, clahe, train):
+    """Menyimpan hanya area di sekitar konjungtiva yang sudah diperkecil.
+
+    Foto Eyes-defy-anemia berukuran ~12 MP; memuat semuanya utuh ke RAM butuh ~9 GB.
+    Area yang disimpan = kotak mask + margin (cukup untuk padding acak + geseran), lalu sisi
+    terpanjangnya dibatasi `max_side` piksel. Ini tidak mengubah apa yang dilihat U-Net karena
+    masukannya memang diperkecil ke 256x256.
+    """
+
+    def __init__(self, df, size, pad_range, clahe, train, max_side=768):
         self.items, self.size, self.pad_range, self.train = [], size, pad_range, train
+        margin = pad_range[1] + 0.2
         for _, r in df.iterrows():
             img = read_image(r["image_path"])
             m = read_mask(r["mask_path"], img.shape)
-            if mask_bbox(m) is None:
+            box = mask_bbox(m)
+            if box is None:
                 continue
-            self.items.append((apply_clahe(img) if clahe else img, m))
+            x1, y1, x2, y2 = pad_box(box, margin, m.shape[1], m.shape[0])
+            ci, cm = img[y1:y2, x1:x2], m[y1:y2, x1:x2]
+            s = min(1.0, max_side / max(ci.shape[:2]))
+            if s < 1.0:
+                ci = cv2.resize(ci, (int(ci.shape[1] * s), int(ci.shape[0] * s)), interpolation=cv2.INTER_AREA)
+                cm = cv2.resize(cm, (ci.shape[1], ci.shape[0]), interpolation=cv2.INTER_NEAREST)
+            self.items.append((apply_clahe(ci) if clahe else ci.copy(), cm.copy()))
+            del img, m
         self.rng = np.random.default_rng(0)
 
     def __len__(self):
@@ -56,7 +73,7 @@ class CropDataset(Dataset):
             M = cv2.getRotationMatrix2D((ci.shape[1] / 2, ci.shape[0] / 2), ang, 1.0)
             ci = cv2.warpAffine(np.ascontiguousarray(ci), M, (ci.shape[1], ci.shape[0]), borderMode=cv2.BORDER_REFLECT)
             cm = cv2.warpAffine(np.ascontiguousarray(cm), M, (cm.shape[1], cm.shape[0]), flags=cv2.INTER_NEAREST)
-            ci = np.clip(ci.astype(np.float32) * self.rng.uniform(0.85, 1.15), 0, 255).astype(np.uint8)
+            ci = cv2.convertScaleAbs(ci, alpha=float(self.rng.uniform(0.85, 1.15)), beta=0)  # tanpa salinan float32
         x = to_tensor(np.ascontiguousarray(ci), self.size)
         y = cv2.resize(np.ascontiguousarray(cm), (self.size, self.size), interpolation=cv2.INTER_NEAREST)
         return x, torch.from_numpy((y > 0).astype(np.float32))[None]

@@ -29,13 +29,15 @@ def overlay(img, mask, color):
     tint = vis.copy()
     tint[mask > 0] = color
     vis = cv2.addWeighted(tint, 0.35, vis, 0.65, 0)
-    cv2.drawContours(vis, cnts, -1, color, 3)
+    cv2.drawContours(vis, cnts, -1, color, max(3, img.shape[1] // 150))
     return vis
 
 
-def label(img, text):
-    out = cv2.copyMakeBorder(img, 34, 0, 0, 0, cv2.BORDER_CONSTANT, value=(255, 255, 255))
-    cv2.putText(out, text, (8, 25), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (20, 20, 20), 2, cv2.LINE_AA)
+def label(img, text, width=300):
+    """Perkecil ke lebar tetap dulu, baru beri judul, agar teks terbaca pada citra beresolusi tinggi."""
+    img = cv2.resize(img, (width, int(width * img.shape[0] / img.shape[1])), interpolation=cv2.INTER_AREA)
+    out = cv2.copyMakeBorder(img, 26, 0, 0, 0, cv2.BORDER_CONSTANT, value=(255, 255, 255))
+    cv2.putText(out, text, (6, 19), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (20, 20, 20), 1, cv2.LINE_AA)
     return out
 
 
@@ -73,7 +75,7 @@ def main():
             title = name + (f"  Dice {seg['dice_score']:.2f}" if info["detected"] else "  GAGAL")
             panels.append(label(overlay(img, mask, color), title))
         if r["split"] == "test" and len(gallery) < 4:
-            gallery.append(np.hstack([cv2.resize(p, (300, int(300 * p.shape[0] / p.shape[1]))) for p in panels]))
+            gallery.append(np.hstack(panels))
 
     per = pd.DataFrame(rows)
     rep = ROOT / "reports"
